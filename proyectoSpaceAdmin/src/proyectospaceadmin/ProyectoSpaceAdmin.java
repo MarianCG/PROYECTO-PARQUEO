@@ -30,7 +30,7 @@ public class ProyectoSpaceAdmin {
         // TODO code application logic here
 
 //      **INICIALIZACION DE PANTALLA**
-        Park_s1 parqueoS1 = new Park_s1();
+        matrizBottonsPark parqueoS1 = new matrizBottonsPark();
         parqueoS1.setVisible(true);
     }
 
