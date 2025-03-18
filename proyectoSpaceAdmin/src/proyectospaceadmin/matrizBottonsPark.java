@@ -57,14 +57,14 @@ public class matrizBottonsPark extends javax.swing.JFrame {
 
         panelS1.revalidate();
         panelS1.repaint();
-        valueBottons(rowS1,columS1); // Llamar sin parámetros
+        valueBottons(rowS1,columS1,matrizS1); // Llamar sin parámetros
     }
 
 // Método para actualizar botones según la disponibilidad
-    public void valueBottons(int x, int y) {
+    public void valueBottons(int x, int y,boolean[][] matrix) {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
-                if (matrizS1[i][j]) {
+                if (matrix[i][j]) {
                     parkS1[i][j].setBackground(Color.GREEN);
                     parkS1[i][j].setText("Disponible");
                 } else {
