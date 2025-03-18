@@ -21,43 +21,60 @@ public class matrizBottonsPark extends javax.swing.JFrame {
         setMatrizS1();
     }
 
-    //Matriz de Botones
-    private int rowS1 = 4;
-    private int columS1 = 5;
+// Matriz de Botones
+    private int rowS1 = 5; // 5 filas
+    private int columS1 = 4; // 4 columnas
     JButton[][] parkS1;
 
-    //Metodo para Crear Matriz
-    public void setMatrizS1() {
-
-        parkS1 = new JButton[rowS1][columS1];
-        //Primera posicion
-        int positionX = 30;
-        int positionY = 100;
-
-        //Matriz
-        boolean matrizS1[][] = {{true, false, false, true},
+// Matriz de disponibilidad
+    boolean matrizS1[][] = {
+        {true, false, false, true},
         {false, false, true, false},
         {true, true, true, false},
         {false, false, false, false},
-        {true, true, true, true}};
+        {true, true, true, true}
+    };
 
-        //For para crear los botones
+// Método para Crear Matriz
+    public void setMatrizS1() {
+        parkS1 = new JButton[rowS1][columS1];
+        int positionX = 40;
+        int positionY = 100;
+
         for (int i = 0; i < rowS1; i++) {
             for (int j = 0; j < columS1; j++) {
                 parkS1[i][j] = new JButton();
                 parkS1[i][j].setBounds(positionX, positionY, 120, 60);
+                parkS1[i][j].setBackground(Color.LIGHT_GRAY);
+                parkS1[i][j].setText("Loading...");
 
-                parkS1[i][j].setBackground(Color.green);
-                parkS1[i][j].setText("Disponible");
-                positionX += 155;
+                panelS1.add(parkS1[i][j]);
+                positionX += 190;
             }
-            positionX = 30;
+            positionX = 40;
             positionY += 120;
         }
+
         panelS1.revalidate();
         panelS1.repaint();
+        valueBottons(rowS1,columS1); // Llamar sin parámetros
     }
 
+// Método para actualizar botones según la disponibilidad
+    public void valueBottons(int x, int y) {
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                if (matrizS1[i][j]) {
+                    parkS1[i][j].setBackground(Color.GREEN);
+                    parkS1[i][j].setText("Disponible");
+                } else {
+                    parkS1[i][j].setBackground(Color.RED);
+                    parkS1[i][j].setText("No disponible");
+                }
+            }
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
