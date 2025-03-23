@@ -1,22 +1,27 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package proyectospaceadmin;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author porto
  */
-public class matrizBottonsPark extends javax.swing.JFrame {
+public class ParkS1 extends javax.swing.JPanel {
 
     /**
-     * Creates new form matrizBottonsPark
+     * Creates new form ParkS1temp
      */
-    public matrizBottonsPark() {
+    public ParkS1() {
         initComponents();
         setMatrizS1();
     }
@@ -35,33 +40,70 @@ public class matrizBottonsPark extends javax.swing.JFrame {
         {true, true, true, true}
     };
 
+    //Metodo para cerrar
+    private void cerrarVentana() {
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        if (frame != null) {
+            frame.dispose(); // Cierra la ventana
+        }
+    }
+    
 // Método para Crear Matriz
+    //Parqueo S1 5x4
+
     public void setMatrizS1() {
         parkS1 = new JButton[rowS1][columS1];
-        int positionX = 40;
-        int positionY = 100;
+        int positionX = 30;
+        int positionY = 30;
 
         for (int i = 0; i < rowS1; i++) {
             for (int j = 0; j < columS1; j++) {
                 parkS1[i][j] = new JButton();
-                parkS1[i][j].setBounds(positionX, positionY, 120, 60);
+                parkS1[i][j].setBounds(positionX, positionY, 150, 60);
                 parkS1[i][j].setBackground(Color.LIGHT_GRAY);
                 parkS1[i][j].setText("Loading...");
+                ButtonController bt = new ButtonController();
+                parkS1[i][j].addActionListener(bt);
 
                 panelS1.add(parkS1[i][j]);
-                positionX += 190;
+                positionX += 220;
             }
-            positionX = 40;
+            positionX = 30;
             positionY += 120;
         }
 
         panelS1.revalidate();
         panelS1.repaint();
-        valueBottons(rowS1,columS1,matrizS1); // Llamar sin parámetros
+        valueBottons(rowS1, columS1, matrizS1); // Llamar sin parámetros
+    }
+
+    //Clase de accion de boton 
+    private class ButtonController implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            //seleccionar el boton de la matrix
+            for (int i = 0; i < rowS1; i++) {
+                for (int j = 0; j < columS1; j++) {
+                    if (e.getSource().equals(parkS1[i][j])) {
+                        if (matrizS1[i][j] == false) {
+                            JOptionPane.showMessageDialog(null, "Elije otro espacio este no esta disponible");
+                        } else {
+                            formularioRequest form = new formularioRequest();
+                            form.setDato("La matriz es"+i+j);
+                            cerrarVentana();
+                            form.setVisible(true);
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
 // Método para actualizar botones según la disponibilidad
-    public void valueBottons(int x, int y,boolean[][] matrix) {
+    public void valueBottons(int x, int y, boolean[][] matrix) {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
                 if (matrix[i][j]) {
@@ -74,7 +116,7 @@ public class matrizBottonsPark extends javax.swing.JFrame {
             }
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,35 +127,24 @@ public class matrizBottonsPark extends javax.swing.JFrame {
     private void initComponents() {
 
         panelS1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(500, 300));
 
         panelS1.setBackground(new java.awt.Color(102, 102, 102));
-
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
-        jLabel1.setText("Parqueo S1");
 
         javax.swing.GroupLayout panelS1Layout = new javax.swing.GroupLayout(panelS1);
         panelS1.setLayout(panelS1Layout);
         panelS1Layout.setHorizontalGroup(
             panelS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelS1Layout.createSequentialGroup()
-                .addGap(268, 268, 268)
-                .addComponent(jLabel1)
-                .addContainerGap(279, Short.MAX_VALUE))
+            .addGap(0, 900, Short.MAX_VALUE)
         );
         panelS1Layout.setVerticalGroup(
             panelS1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelS1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(536, Short.MAX_VALUE))
+            .addGap(0, 658, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelS1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -122,47 +153,10 @@ public class matrizBottonsPark extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelS1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(matrizBottonsPark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(matrizBottonsPark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(matrizBottonsPark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(matrizBottonsPark.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new matrizBottonsPark().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelS1;
     // End of variables declaration//GEN-END:variables
 }
