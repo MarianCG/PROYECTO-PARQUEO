@@ -33,12 +33,12 @@ public class ParkS1 extends javax.swing.JPanel {
 
 //Cambiar por enum
 // Matriz de disponibilidad
-    boolean matrizS1[][] = {
-        {true, false, false, true},
-        {false, false, true, false},
-        {true, true, true, false},
-        {false, false, false, false},
-        {true, true, true, true}
+    String matrizS1[][] = {
+        {"D","P","O","O"},
+        {"O","O","O","O"},
+        {"O","P","O","O"},
+        {"E","E","E","O"},
+        {"P","O","O","D"}
     };
 
     //Metodo para cerrar
@@ -88,11 +88,11 @@ public class ParkS1 extends javax.swing.JPanel {
             for (int i = 0; i < rowS1; i++) {
                 for (int j = 0; j < columS1; j++) {
                     if (e.getSource().equals(parkS1[i][j])) {
-                        if (matrizS1[i][j] == false) {
+                        if (matrizS1[i][j] == "P") {
                             JOptionPane.showMessageDialog(null, "Elije otro espacio este no esta disponible");
                         } else {
                             formularioRequest form = new formularioRequest();
-                            form.setDato("La matriz es"+i+j);
+                            form.setDato(matrizS1[i][j]);
                             cerrarVentana();
                             form.setVisible(true);
                         }
@@ -100,17 +100,25 @@ public class ParkS1 extends javax.swing.JPanel {
                 }
             }
         }
-
     }
 
 // Método para actualizar botones según la disponibilidad
-    public void valueBottons(int x, int y, boolean[][] matrix) {
+    public void valueBottons(int x, int y, String[][] matrix) {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
-                if (matrix[i][j]) {
+                if (matrix[i][j]=="O") {
                     parkS1[i][j].setBackground(Color.GREEN);
                     parkS1[i][j].setText("Disponible");
-                } else {
+                } 
+                else if(matrix[i][j]=="E"){
+                    parkS1[i][j].setBackground(Color.BLUE);
+                    parkS1[i][j].setText("Disponible");                
+                }
+                else if(matrix[i][j]=="D"){
+                    parkS1[i][j].setBackground(Color.ORANGE);
+                    parkS1[i][j].setText("Disponible");                
+                }                
+                else {
                     parkS1[i][j].setBackground(Color.RED);
                     parkS1[i][j].setText("No disponible");
                 }

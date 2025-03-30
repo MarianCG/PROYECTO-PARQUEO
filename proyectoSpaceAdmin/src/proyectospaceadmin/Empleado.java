@@ -15,11 +15,11 @@ public class Empleado {
     
     private String name;
     private String lastname;
-    private String id;
+    private int id;
     private boolean director;
     private boolean discapacitado; 
 
-    public Empleado(String nombre, String apellido, String id, boolean director, boolean discapacitado) {
+    public Empleado(String nombre, String apellido, int id, boolean director, boolean discapacitado) {
         this.name = nombre;
         this.lastname = apellido;
         this.id = id;
@@ -43,11 +43,11 @@ public class Empleado {
         this.lastname = apellido;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -78,6 +78,16 @@ public class Empleado {
                 + "Discapacitado:" + (discapacitado ? "Si" : "No");
         
         JOptionPane.showMessageDialog(null, "Datos del empleado: " + info);
+    }
+    
+    //Buscar EMPLEADO
+    public static Empleado searchWorker(Empleado[] empleados, int ID){
+        for (int i = 0; i < empleados.length; i++) {
+            if (empleados[i]!= null && empleados[i].getId() == ID) {
+                return empleados[i];
+            }
+        }
+        return null;
     }
     
       

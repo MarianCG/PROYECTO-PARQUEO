@@ -9,21 +9,27 @@ package proyectospaceadmin;
  * @author porto
  */
 public class formularioRequest extends javax.swing.JFrame {
-    
+
     private String dato;
-    
+    private Empleado empleado;
+
     /**
      * Creates new form formularioRequest
      */
     public formularioRequest() {
+        this.empleado = empleado;
         initComponents();
     }
-    
+
 //Devolver la ubicacion del boton
-    public void setDato(String dato){
+    public void setDato(String dato) {
         this.dato = dato;
         cautionText.setText(dato);
     }
+
+    
+//Verificar si el campo es valido para empleado
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,11 +118,11 @@ public class formularioRequest extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(265, 265, 265)
-                        .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(385, 385, 385)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(337, 337, 337)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(311, 311, 311)
+                        .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -158,15 +164,16 @@ public class formularioRequest extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Botton Back
     private void backBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBottonActionPerformed
-        
+
         dashBoardParks parqueo = new dashBoardParks();
         parqueo.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBottonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

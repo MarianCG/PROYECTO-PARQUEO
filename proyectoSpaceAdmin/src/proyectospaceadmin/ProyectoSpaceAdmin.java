@@ -28,11 +28,26 @@ public class ProyectoSpaceAdmin {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-
+        
+        
+        
+        //Crear Empleados Temp
+        
+        Empleado arrEmpleado[] = new Empleado[5];
+        
+        arrEmpleado[0]= new Empleado("Erick", "Portocarrero", 118180881, true, false);
+        arrEmpleado[1]= new Empleado("Andres", "Viquez", 12345678, false, true);
+        arrEmpleado[2]= new Empleado("Kristel", "Vargas", 208460639, false, false);
+        arrEmpleado[3]= new Empleado("David", "Moreno", 98765432, true, true);
+        arrEmpleado[4]= new Empleado("Jose", "Apestegui", 118180881, false, false);
+        
 //      **INICIALIZACION DE PANTALLA**
         dashBoardParks parqueo = new dashBoardParks();
+        
         parqueo.setVisible(true);
 
     }
 
 }
+
+
