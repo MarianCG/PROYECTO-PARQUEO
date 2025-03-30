@@ -31,6 +31,7 @@ public class ParkS1 extends javax.swing.JPanel {
     private int columS1 = 4; // 4 columnas
     JButton[][] parkS1;
 
+//Cambiar por enum
 // Matriz de disponibilidad
     boolean matrizS1[][] = {
         {true, false, false, true},
