@@ -82,8 +82,8 @@ public class Empleado {
     
     //Buscar EMPLEADO
     public static Empleado searchWorker(Empleado[] empleados, int ID){
-        for (int i = 0; i < empleados.length; i++) {
-            if (empleados[i]!= null && empleados[i].getId() == ID) {
+        for (int i = 0; i < empleados.length; i++) { 
+            if (empleados[i]!= null && empleados[i].getId() == ID) { // si el empleado seleccionado no es NULL y Es igual ID retorna el empleado seleccionado
                 return empleados[i];
             }
         }
