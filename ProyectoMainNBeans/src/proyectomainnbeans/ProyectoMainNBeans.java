@@ -16,7 +16,7 @@ public class ProyectoMainNBeans {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      //hola Angelica
+      //hola Josafath
       
        Parqueo parqueo = new Parqueo();
        SalaReuniones Sala1 = new SalaReuniones("Sala 1\n", 5);
