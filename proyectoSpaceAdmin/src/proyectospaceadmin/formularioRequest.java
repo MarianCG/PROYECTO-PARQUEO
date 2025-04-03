@@ -10,26 +10,52 @@ package proyectospaceadmin;
  */
 public class formularioRequest extends javax.swing.JFrame {
 
-    private String dato;
-    private Empleado empleado;
+    private int datoX;
+    private int datoY;
+    private String status;
+    private String idPark;
+    private Empleado[] arrEmpleado;
+    private String[][] parkS1;
+    private String[][] parkS2;
+    private String[][] parkS3;
 
     /**
      * Creates new form formularioRequest
      */
-    public formularioRequest() {
-        this.empleado = empleado;
+    public formularioRequest(Empleado[] arrEmpleado, String[][] parkS1, String[][] parkS2, String[][] parkS3) {
+        this.arrEmpleado = arrEmpleado;
+        this.parkS1 = parkS1;
+        this.parkS2 = parkS2;
+        this.parkS3 = parkS3;
         initComponents();
     }
 
 //Devolver la ubicacion del boton
-    public void setDato(String dato) {
-        this.dato = dato;
-        cautionText.setText(dato);
+    public int setDatoX(int datoX) {
+        this.datoX = datoX;
+        return datoX;
+
     }
 
-    
+    public int setDatoY(int datoY) {
+        this.datoY = datoY;
+        return datoY;
+
+    }
+
+    //Saber de que menu viene
+    public String setidPark(String idPark) {
+        this.idPark = idPark;
+        return idPark;
+    }
+
+    //Devolver la ubicacion del boton
+    public String setStatus(String status) {
+        this.status = status;
+        return status;
+    }
+
 //Verificar si el campo es valido para empleado
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,13 +67,11 @@ public class formularioRequest extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        phoneInput = new javax.swing.JTextArea();
+        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
         idInput = new javax.swing.JTextArea();
         cautionText = new javax.swing.JLabel();
         backBotton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        bottonValidator = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,15 +80,8 @@ public class formularioRequest extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
         jLabel1.setText("Formulario para el parqueo");
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
         jLabel2.setText("ID:");
-
-        jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
-        jLabel5.setText("Telefono:");
-
-        phoneInput.setColumns(20);
-        phoneInput.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
-        phoneInput.setRows(5);
 
         idInput.setColumns(20);
         idInput.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
@@ -81,12 +98,12 @@ public class formularioRequest extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 0));
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jButton1.setText("Listo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bottonValidator.setBackground(new java.awt.Color(0, 153, 0));
+        bottonValidator.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        bottonValidator.setText("Listo");
+        bottonValidator.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bottonValidatorActionPerformed(evt);
             }
         });
 
@@ -95,35 +112,25 @@ public class formularioRequest extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(82, 82, 82))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(phoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(174, 174, 174))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(98, 98, 98)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(385, 385, 385)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bottonValidator, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(311, 311, 311)
-                        .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 96, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(298, 298, 298))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,18 +142,18 @@ public class formularioRequest extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jLabel1)))
-                .addGap(86, 86, 86)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(98, 98, 98)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(phoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(78, 78, 78)
-                .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(177, 177, 177))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)))
+                .addComponent(bottonValidator, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(208, Short.MAX_VALUE))
         );
 
@@ -154,7 +161,7 @@ public class formularioRequest extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 906, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,14 +174,37 @@ public class formularioRequest extends javax.swing.JFrame {
     //Botton Back
     private void backBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBottonActionPerformed
 
-        dashBoardParks parqueo = new dashBoardParks();
+        dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
         parqueo.setVisible(true);
         this.setVisible(false);
+
     }//GEN-LAST:event_backBottonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    //Botton Validador
+    private void bottonValidatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonValidatorActionPerformed
+        int id = Integer.parseInt(idInput.getText());
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (searchWorker(id)) {
+            cautionText.setText("Cedula Valida");
+            if (idPark == "S1") {
+                parkS1[datoX][datoY] = "P";
+                dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
+                parqueo.setVisible(true);
+                this.setVisible(false);
+            } else if (idPark == "S2") {
+                parkS2[datoX][datoY] = "P";
+                dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
+                parqueo.setVisible(true);
+                this.setVisible(false);
+            } else if (idPark == "S3") {
+                parkS3[datoX][datoY] = "P";
+                dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
+                parqueo.setVisible(true);
+                this.setVisible(false);
+            }
+        } else
+            cautionText.setText("Cedula Invalida");
+    }//GEN-LAST:event_bottonValidatorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,22 +234,29 @@ public class formularioRequest extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new formularioRequest().setVisible(true);
-            }
-        });
     }
+
+    //Buscar EMPLEADO
+    private boolean searchWorker(int ID) {
+        for (int i = 0; i < arrEmpleado.length; i++) {
+            if (arrEmpleado[i] != null && arrEmpleado[i].getId() == ID) { // si el empleado seleccionado no es NULL y Es igual ID retorna el empleado seleccionado
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //Verificar si el campo es valido
+//    private void idValidator(int id){
+//        if()
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBotton;
+    private javax.swing.JButton bottonValidator;
     private javax.swing.JLabel cautionText;
     private javax.swing.JTextArea idInput;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextArea phoneInput;
     // End of variables declaration//GEN-END:variables
 }

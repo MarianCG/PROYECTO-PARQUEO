@@ -21,7 +21,17 @@ public class ParkS2 extends javax.swing.JPanel {
     /**
      * Creates new form ParkS1temp
      */
-    public ParkS2() {
+    private Empleado[] arrEmpleado;
+    private String[][] matrizS1;
+    private String[][] matrizS2;
+    private String[][] matrizS3;
+
+    public ParkS2(Empleado[] arrEmpleado, String[][] matrizS1, String[][] matrizS2, String[][] matrizS3) {
+        this.arrEmpleado = arrEmpleado;
+        this.arrEmpleado = arrEmpleado;
+        this.matrizS1 = matrizS1;
+        this.matrizS2 = matrizS2;
+        this.matrizS3 = matrizS3;
         initComponents();
         setMatrizS2();
     }
@@ -31,15 +41,6 @@ public class ParkS2 extends javax.swing.JPanel {
     private int columS2 = 5; // 5 columnas
     JButton[][] parkS2;
 
-// Matriz de disponibilidad
-    String matrizS2[][] = {
-        {"P", "P", "O", "O","P"},
-        {"O", "D", "O", "O","O"},
-        {"O", "P", "O", "O","O"},
-        {"O", "O", "O", "O","P"},
-        {"E", "E", "E", "P","P"}
-    };
-
     //metodo para cerrar
     private void cerrarVentana() {
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
@@ -47,7 +48,7 @@ public class ParkS2 extends javax.swing.JPanel {
             frame.dispose(); // Cierra la ventana
         }
     }
-    
+
 // Método para Crear Matriz
     //Parqueo S1 5x4
     public void setMatrizS2() {
@@ -70,61 +71,59 @@ public class ParkS2 extends javax.swing.JPanel {
             positionX = 30;
             positionY += 120;
         }
-        
+
         panelS2.revalidate();
         panelS2.repaint();
-        valueBottons(rowS2,columS2,matrizS2); // Llamar sin parámetros
+        valueBottons(rowS2, columS2, matrizS2); // Llamar sin parámetros
     }
-    
-    
+
     //Clase de accion de boton 
-    private class ButtonController implements ActionListener{
+    private class ButtonController implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+
             //seleccionar el boton de la matrix
             for (int i = 0; i < rowS2; i++) {
                 for (int j = 0; j < columS2; j++) {
                     if (e.getSource().equals(parkS2[i][j])) {
-                        if(matrizS2[i][j]=="P")JOptionPane.showMessageDialog(null, "Elije otro espacio este no esta disponible");
-                        
-                    } else {
-                            formularioRequest form = new formularioRequest();
-                            form.setDato(matrizS2[i][j]);
+                        if (matrizS2[i][j] == "P") {
+                            JOptionPane.showMessageDialog(null, "Elije otro espacio este no esta disponible");
+                        } else {
+                            formularioRequest form = new formularioRequest(arrEmpleado,matrizS1,matrizS2,matrizS3);
+                            form.setDatoX(i);
+                            form.setDatoY(j);
+                            form.setStatus(matrizS2[i][j]);
+                            form.setidPark("S2");
                             cerrarVentana();
                             form.setVisible(true);
+                        }
                     }
                 }
             }
         }
-    
     }
 
 // Método para actualizar botones según la disponibilidad
     public void valueBottons(int x, int y, String[][] matrix) {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
-                if (matrix[i][j]=="O") {
+                if (matrix[i][j] == "O") {
                     parkS2[i][j].setBackground(Color.GREEN);
                     parkS2[i][j].setText("Disponible");
-                } 
-                else if(matrix[i][j]=="E"){
+                } else if (matrix[i][j] == "E") {
                     parkS2[i][j].setBackground(Color.BLUE);
-                    parkS2[i][j].setText("Disponible");                
-                }
-                else if(matrix[i][j]=="D"){
+                    parkS2[i][j].setText("Disponible");
+                } else if (matrix[i][j] == "D") {
                     parkS2[i][j].setBackground(Color.ORANGE);
-                    parkS2[i][j].setText("Disponible");                
-                }                
-                else {
+                    parkS2[i][j].setText("Disponible");
+                } else {
                     parkS2[i][j].setBackground(Color.RED);
                     parkS2[i][j].setText("No disponible");
                 }
             }
         }
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

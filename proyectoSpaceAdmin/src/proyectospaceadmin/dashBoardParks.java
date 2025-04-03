@@ -13,12 +13,31 @@ import java.awt.BorderLayout;
 public class dashBoardParks extends javax.swing.JFrame {
 
     /**
-     * Creates new form dashBoardParks
+     * Este JFrame es para poder reservar los espacios del parqueo y ver que
+     * tipo de parqueo
      */
-    public dashBoardParks() {
-        initComponents();
+    private Empleado[] arrEmpleado;
+    private String[][] matrizS1;
+    private String[][] matrizS2;
+    private String[][] matrizS3;
 
+    public dashBoardParks(Empleado[] arrEmpleado, String[][] matrizS1, String[][] matrizS2, String[][] matrizS3) {
+        this.arrEmpleado = arrEmpleado;
+        this.matrizS1 = matrizS1;
+        this.matrizS2 = matrizS2;
+        this.matrizS3 = matrizS3;
+        initComponents();
     }
+//
+//    public static boolean idVerificator(int id) {
+//        
+//        for (int i = 0; i < arrEmpleado.length; i++) {
+//            if (arrEmpleado[i] != null && arrEmpleado[i].getId() == id) { // si el empleado seleccionado no es NULL y Es igual ID retorna el empleado seleccionado
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -89,7 +108,7 @@ public class dashBoardParks extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addComponent(parkBttnS3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
-            .addComponent(contentPark, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contentPark, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,8 +118,9 @@ public class dashBoardParks extends javax.swing.JFrame {
                     .addComponent(parkBttnS1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(parkBttnS2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(parkBttnS3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(contentPark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contentPark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,29 +138,29 @@ public class dashBoardParks extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void parkBttnS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkBttnS3ActionPerformed
-        ParkS3 parkS3 = new ParkS3();
+        ParkS3 parkS3 = new ParkS3(arrEmpleado,matrizS1,matrizS2,matrizS3);
         parkS3.setSize(900, 658);
         parkS3.setLocation(0, 0);
 
         contentPark.removeAll();
         contentPark.add(parkS3, BorderLayout.CENTER);
         contentPark.revalidate();
-        contentPark.repaint(); 
+        contentPark.repaint();
     }//GEN-LAST:event_parkBttnS3ActionPerformed
 
     private void parkBttnS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkBttnS1ActionPerformed
-        ParkS1 parkS1 = new ParkS1();
+        ParkS1 parkS1 = new ParkS1(arrEmpleado,matrizS1,matrizS2,matrizS3);
         parkS1.setSize(900, 658);
         parkS1.setLocation(0, 0);
 
         contentPark.removeAll();
         contentPark.add(parkS1, BorderLayout.CENTER);
         contentPark.revalidate();
-        contentPark.repaint();       
+        contentPark.repaint();
     }//GEN-LAST:event_parkBttnS1ActionPerformed
 
     private void parkBttnS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkBttnS2ActionPerformed
-        ParkS2 parkS2 = new ParkS2();
+        ParkS2 parkS2 = new ParkS2(arrEmpleado,matrizS1,matrizS2,matrizS3);
         parkS2.setSize(900, 658);
         parkS2.setLocation(0, 0);
 
@@ -177,12 +197,6 @@ public class dashBoardParks extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new dashBoardParks().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

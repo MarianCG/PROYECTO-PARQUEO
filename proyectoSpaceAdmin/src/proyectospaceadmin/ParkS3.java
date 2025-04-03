@@ -21,7 +21,17 @@ public class ParkS3 extends javax.swing.JPanel {
     /**
      * Creates new form ParkS1temp
      */
-    public ParkS3() {
+    private Empleado[] arrEmpleado;
+    private String[][] matrizS1;
+    private String[][] matrizS2;
+    private String[][] matrizS3;
+
+    public ParkS3(Empleado[] arrEmpleado, String[][] matrizS1, String[][] matrizS2, String[][] matrizS3) {
+        this.arrEmpleado = arrEmpleado;
+        this.arrEmpleado = arrEmpleado;
+        this.matrizS1 = matrizS1;
+        this.matrizS2 = matrizS2;
+        this.matrizS3 = matrizS3;
         initComponents();
         setMatrizS3();
     }
@@ -30,16 +40,6 @@ public class ParkS3 extends javax.swing.JPanel {
     private int rowS3 = 6; // 5 filas
     private int columS3 = 5; // 5 columnas
     JButton[][] parkS3;
-
-// Matriz de disponibilidad
-    String matrizS3[][] = {
-        {"P", "P", "O", "O", "P"},
-        {"O", "O", "O", "O", "O"},
-        {"O", "P", "O", "O", "O"},
-        {"O", "O", "O", "O", "P"},
-        {"P", "P", "D", "P", "P"},
-        {"E", "E", "E", "O", "D"}
-    };
 
     //metodo para cerrar
     private void cerrarVentana() {
@@ -90,8 +90,11 @@ public class ParkS3 extends javax.swing.JPanel {
                         if (matrizS3[i][j] == "P") {
                             JOptionPane.showMessageDialog(null, "Elije otro espacio este no esta disponible");
                         } else {
-                            formularioRequest form = new formularioRequest();
-                            form.setDato(matrizS3[i][j]);
+                            formularioRequest form = new formularioRequest(arrEmpleado, matrizS1, matrizS2, matrizS3);
+                            form.setDatoX(i);
+                            form.setDatoY(j);
+                            form.setStatus(matrizS3[i][j]);
+                            form.setidPark("S3");
                             cerrarVentana();
                             form.setVisible(true);
                         }
