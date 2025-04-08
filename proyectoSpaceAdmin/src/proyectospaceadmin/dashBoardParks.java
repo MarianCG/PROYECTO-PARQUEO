@@ -141,6 +141,7 @@ public class dashBoardParks extends javax.swing.JFrame {
         ParkS3 parkS3 = new ParkS3(arrEmpleado,matrizS1,matrizS2,matrizS3);
         parkS3.setSize(900, 658);
         parkS3.setLocation(0, 0);
+        
 
         contentPark.removeAll();
         contentPark.add(parkS3, BorderLayout.CENTER);

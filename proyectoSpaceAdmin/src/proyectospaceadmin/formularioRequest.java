@@ -184,26 +184,8 @@ public class formularioRequest extends javax.swing.JFrame {
     private void bottonValidatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonValidatorActionPerformed
         int id = Integer.parseInt(idInput.getText());
 
-        if (searchWorker(id)) {
-            cautionText.setText("Cedula Valida");
-            if (idPark == "S1") {
-                parkS1[datoX][datoY] = "P";
-                dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
-                parqueo.setVisible(true);
-                this.setVisible(false);
-            } else if (idPark == "S2") {
-                parkS2[datoX][datoY] = "P";
-                dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
-                parqueo.setVisible(true);
-                this.setVisible(false);
-            } else if (idPark == "S3") {
-                parkS3[datoX][datoY] = "P";
-                dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
-                parqueo.setVisible(true);
-                this.setVisible(false);
-            }
-        } else
-            cautionText.setText("Cedula Invalida");
+        if (searchWorker(id) == false)
+            cautionText.setText("Este usuario no tiene permisos para reservar aca");
     }//GEN-LAST:event_bottonValidatorActionPerformed
 
     /**
@@ -236,16 +218,62 @@ public class formularioRequest extends javax.swing.JFrame {
         /* Create and display the form */
     }
 
-    //Buscar EMPLEADO
+    //Buscar EMPLEADO y Selector 
     private boolean searchWorker(int ID) {
         for (int i = 0; i < arrEmpleado.length; i++) {
             if (arrEmpleado[i] != null && arrEmpleado[i].getId() == ID) { // si el empleado seleccionado no es NULL y Es igual ID retorna el empleado seleccionado
-                return true;
+                if (status == "D") {
+                    boolean tipo = arrEmpleado[i].isDirector();
+                    if (tipo == true) {
+                        if (idPark == "S1") {
+                            parkS1[datoX][datoY] = "P";
+                        } else if (idPark == "S2") {
+                            parkS2[datoX][datoY] = "P";
+                        } else if (idPark == "S3") {
+                            parkS3[datoX][datoY] = "P";
+                        }
+                        dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
+                        parqueo.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    return tipo;
+                } else if (status == "E") {
+                    boolean tipo = arrEmpleado[i].isdiscapacitado();
+                    if (tipo == true) {
+                        if (idPark == "S1") {
+                            parkS1[datoX][datoY] = "P";
+                        } else if (idPark == "S2") {
+                            parkS2[datoX][datoY] = "P";
+                        } else if (idPark == "S3") {
+                            parkS3[datoX][datoY] = "P";
+                        }
+                        dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
+                        parqueo.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    return tipo;
+                } else if (status == "O") {
+                    boolean tipo = true;
+                    if (tipo == true) {
+                        if (idPark == "S1") {
+                            parkS1[datoX][datoY] = "P";
+                        } else if (idPark == "S2") {
+                            parkS2[datoX][datoY] = "P";
+                        } else if (idPark == "S3") {
+                            parkS3[datoX][datoY] = "P";
+                        }
+                        dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
+                        parqueo.setVisible(true);
+                        this.setVisible(false);
+                    }
+                    return tipo;
+                }
             }
         }
         return false;
     }
 
+    //Ver si el empleado es o director o discapacitado 
     //Verificar si el campo es valido
 //    private void idValidator(int id){
 //        if()
