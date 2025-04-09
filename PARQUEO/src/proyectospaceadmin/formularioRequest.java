@@ -14,16 +14,17 @@ public class formularioRequest extends javax.swing.JFrame {
     private int datoY;
     private String status;
     private String idPark;
-    private Empleado[] arrEmpleado;
     private String[][] parkS1;
     private String[][] parkS2;
     private String[][] parkS3;
+    
+    //importacion de tabla 
+    public static Data data = new Data();
 
     /**
      * Creates new form formularioRequest
      */
-    public formularioRequest(Empleado[] arrEmpleado, String[][] parkS1, String[][] parkS2, String[][] parkS3) {
-        this.arrEmpleado = arrEmpleado;
+    public formularioRequest(String[][] parkS1, String[][] parkS2, String[][] parkS3) {
         this.parkS1 = parkS1;
         this.parkS2 = parkS2;
         this.parkS3 = parkS3;
@@ -174,7 +175,7 @@ public class formularioRequest extends javax.swing.JFrame {
     //Botton Back
     private void backBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBottonActionPerformed
 
-        dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
+        dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
         parqueo.setVisible(true);
         this.setVisible(false);
 
@@ -220,10 +221,10 @@ public class formularioRequest extends javax.swing.JFrame {
 
     //Buscar EMPLEADO y Selector 
     private boolean searchWorker(int ID) {
-        for (int i = 0; i < arrEmpleado.length; i++) {
-            if (arrEmpleado[i] != null && arrEmpleado[i].getId() == ID) { // si el empleado seleccionado no es NULL y Es igual ID retorna el empleado seleccionado
+        for (int i = 0; i < data.arrEmpleado.length; i++) {
+            if (data.arrEmpleado[i] != null && data.arrEmpleado[i].getId() == ID) { // si el empleado seleccionado no es NULL y Es igual ID retorna el empleado seleccionado
                 if (status == "D") {
-                    boolean tipo = arrEmpleado[i].isDirector();
+                    boolean tipo = data.arrEmpleado[i].isDirector();
                     if (tipo == true) {
                         if (idPark == "S1") {
                             parkS1[datoX][datoY] = "P";
@@ -232,13 +233,13 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
-                        dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
+                        dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
                     }
                     return tipo;
                 } else if (status == "E") {
-                    boolean tipo = arrEmpleado[i].isdiscapacitado();
+                    boolean tipo = data.arrEmpleado[i].isdiscapacitado();
                     if (tipo == true) {
                         if (idPark == "S1") {
                             parkS1[datoX][datoY] = "P";
@@ -247,7 +248,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
-                        dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
+                        dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
                     }
@@ -262,7 +263,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
-                        dashBoardParks parqueo = new dashBoardParks(arrEmpleado, parkS1, parkS2, parkS3);
+                        dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
                     }

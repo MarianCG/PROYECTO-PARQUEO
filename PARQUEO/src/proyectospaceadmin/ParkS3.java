@@ -21,14 +21,11 @@ public class ParkS3 extends javax.swing.JPanel {
     /**
      * Creates new form ParkS1temp
      */
-    private Empleado[] arrEmpleado;
     private String[][] matrizS1;
     private String[][] matrizS2;
     private String[][] matrizS3;
 
-    public ParkS3(Empleado[] arrEmpleado, String[][] matrizS1, String[][] matrizS2, String[][] matrizS3) {
-        this.arrEmpleado = arrEmpleado;
-        this.arrEmpleado = arrEmpleado;
+    public ParkS3(String[][] matrizS1, String[][] matrizS2, String[][] matrizS3) {
         this.matrizS1 = matrizS1;
         this.matrizS2 = matrizS2;
         this.matrizS3 = matrizS3;
@@ -90,7 +87,7 @@ public class ParkS3 extends javax.swing.JPanel {
                         if (matrizS3[i][j] == "P") {
                             JOptionPane.showMessageDialog(null, "Elije otro espacio este no esta disponible");
                         } else {
-                            formularioRequest form = new formularioRequest(arrEmpleado, matrizS1, matrizS2, matrizS3);
+                            formularioRequest form = new formularioRequest(matrizS1, matrizS2, matrizS3);
                             form.setDatoX(i);
                             form.setDatoY(j);
                             form.setStatus(matrizS3[i][j]);

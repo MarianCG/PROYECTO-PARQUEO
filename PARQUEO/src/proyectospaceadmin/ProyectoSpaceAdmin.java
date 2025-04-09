@@ -56,7 +56,7 @@ public class ProyectoSpaceAdmin {
 //      **INICIALIZACION DE PANTALLA**
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new dashBoardParks(arrEmpleado,matrizS1,matrizS2,matrizS3).setVisible(true); // Aquí pasas el arreglo de empleados
+                new dashBoardParks(matrizS1,matrizS2,matrizS3).setVisible(true); // Aquí pasas el arreglo de empleados
             }
         });
     }
