@@ -21,8 +21,7 @@ public class formularioRequest extends javax.swing.JFrame {
     private String[][] parkS1;
     private String[][] parkS2;
     private String[][] parkS3;
-    private Historial[] historialReserve = new Historial[50];
-    private int countReserve = 0;
+    String fecha = java.time.LocalDate.now().toString();
 
     //importacion de tabla 
     public static Data data = new Data();
@@ -200,7 +199,7 @@ public class formularioRequest extends javax.swing.JFrame {
 
     //Botton Back
     private void historialBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialBottonActionPerformed
-        mostrarHistorial();
+        Historial.mostrarHistorial();
         JOptionPane.showMessageDialog(null, "Imprimiendo");
     }//GEN-LAST:event_historialBottonActionPerformed
 
@@ -260,7 +259,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
-                        registerReserva(data.arrEmpleado[i].getId(), data.arrEmpleado[i].getName(), idPark);
+                        Historial.agregarReserva(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
                         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -276,7 +275,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
-                        registerReserva(data.arrEmpleado[i].getId(), data.arrEmpleado[i].getName(), idPark);
+                        Historial.agregarReserva(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
                         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -292,7 +291,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
-                        registerReserva(data.arrEmpleado[i].getId(), data.arrEmpleado[i].getName(), idPark);
+                        Historial.agregarReserva(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
                         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -304,25 +303,7 @@ public class formularioRequest extends javax.swing.JFrame {
         return false;
     }
 
-    public void registerReserva(int cedula, String name, String park) {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        String date = now.format(formatter);
-        if (countReserve < historialReserve.length) {
-            historialReserve[countReserve] = new Historial(cedula, name, park, date);
-            countReserve++;
-        } else {
-            //Elimina el primero en colocar
-            countReserve = 0;
-        }
-    }
-
-    public void mostrarHistorial() {
-        for (int i = 0; i < countReserve; i++) {
-            JOptionPane.showMessageDialog(null, historialReserve[i].toString());
-        }
-    }
-
+ 
     //Ver si el empleado es o director o discapacitado 
     //Verificar si el campo es valido
 //    private void idValidator(int id){

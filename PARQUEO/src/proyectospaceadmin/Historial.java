@@ -4,25 +4,40 @@
  */
 package proyectospaceadmin;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author porto
  */
 public class Historial {
-    private int id;
-    private String name;
-    private String park;
-    private String date;
+    private static String[][] historialReservas = new String[20][3];
+    private static int contador = 0;
 
-    public Historial(int id, String name, String park, String fecha) {
-        this.id = id;
-        this.name = name;
-        this.park = park;
-        this.date = date;
+    public static void agregarReserva(String nombre, int cedula, String fecha) {
+        if (contador < historialReservas.length) {
+            historialReservas[contador][0] = nombre;
+            historialReservas[contador][1] = String.valueOf(cedula);
+            historialReservas[contador][2] = fecha;
+            contador++;
+        }
     }
-    
-        public String toString() {
-        return "Cédula: " + id + ", Nombre: " + name + ", Espacio: " + park + ", Fecha: " + date;
+
+    public static void mostrarHistorial() {
+        for (int i = 0; i < contador; i++) {
+            JOptionPane.showMessageDialog(null,"Reserva " + (i + 1) + ": "
+                    + historialReservas[i][0] + " - Cédula: "
+                    + historialReservas[i][1] + " - Fecha: "
+                    + historialReservas[i][2]);
+        }
+    }
+
+    public static String[][] getHistorial() {
+        return historialReservas;
+    }
+
+    public static int getCantidadReservas() {
+        return contador;
     }
     
 }
