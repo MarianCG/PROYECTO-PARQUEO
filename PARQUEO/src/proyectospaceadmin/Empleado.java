@@ -31,16 +31,16 @@ public class Empleado {
         return name;
     }
 
-    public void setNombre(String nombre) {
-        this.name = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String apellido) {
-        this.lastname = apellido;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public int getId() {

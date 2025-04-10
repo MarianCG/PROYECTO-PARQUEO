@@ -4,6 +4,10 @@
  */
 package proyectospaceadmin;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author porto
@@ -17,7 +21,9 @@ public class formularioRequest extends javax.swing.JFrame {
     private String[][] parkS1;
     private String[][] parkS2;
     private String[][] parkS3;
-    
+    private Historial[] historialReserve = new Historial[50];
+    private int countReserve = 0;
+
     //importacion de tabla 
     public static Data data = new Data();
 
@@ -71,8 +77,9 @@ public class formularioRequest extends javax.swing.JFrame {
         javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
         idInput = new javax.swing.JTextArea();
         cautionText = new javax.swing.JLabel();
-        backBotton = new javax.swing.JButton();
+        historialBotton = new javax.swing.JButton();
         bottonValidator = new javax.swing.JButton();
+        backBotton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,11 +98,12 @@ public class formularioRequest extends javax.swing.JFrame {
         cautionText.setFont(new java.awt.Font("Helvetica Neue", 0, 20)); // NOI18N
         cautionText.setForeground(new java.awt.Color(204, 0, 51));
 
-        backBotton.setBackground(new java.awt.Color(153, 0, 0));
-        backBotton.setText("Atras");
-        backBotton.addActionListener(new java.awt.event.ActionListener() {
+        historialBotton.setBackground(new java.awt.Color(255, 255, 0));
+        historialBotton.setForeground(new java.awt.Color(0, 0, 0));
+        historialBotton.setText("Historial");
+        historialBotton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBottonActionPerformed(evt);
+                historialBottonActionPerformed(evt);
             }
         });
 
@@ -108,6 +116,14 @@ public class formularioRequest extends javax.swing.JFrame {
             }
         });
 
+        backBotton1.setBackground(new java.awt.Color(153, 0, 0));
+        backBotton1.setText("Atras");
+        backBotton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBotton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -115,34 +131,39 @@ public class formularioRequest extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel1))
+                        .addGap(172, 172, 172)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addComponent(historialBotton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
-                        .addComponent(bottonValidator, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 96, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(385, 385, 385)
+                                .addComponent(bottonValidator, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(87, 87, 87)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(298, 298, 298))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(backBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(822, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel1)))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(historialBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(204, 204, 204)
@@ -156,6 +177,11 @@ public class formularioRequest extends javax.swing.JFrame {
                         .addGap(51, 51, 51)))
                 .addComponent(bottonValidator, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(208, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(backBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(747, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,13 +199,10 @@ public class formularioRequest extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //Botton Back
-    private void backBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBottonActionPerformed
-
-        dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
-        parqueo.setVisible(true);
-        this.setVisible(false);
-
-    }//GEN-LAST:event_backBottonActionPerformed
+    private void historialBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialBottonActionPerformed
+        mostrarHistorial();
+        JOptionPane.showMessageDialog(null, "Imprimiendo");
+    }//GEN-LAST:event_historialBottonActionPerformed
 
     //Botton Validador
     private void bottonValidatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonValidatorActionPerformed
@@ -188,6 +211,10 @@ public class formularioRequest extends javax.swing.JFrame {
         if (searchWorker(id) == false)
             cautionText.setText("Este usuario no tiene permisos para reservar aca");
     }//GEN-LAST:event_bottonValidatorActionPerformed
+
+    private void backBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBotton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backBotton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,6 +260,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
+                        registerReserva(data.arrEmpleado[i].getId(), data.arrEmpleado[i].getName(), idPark);
                         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -248,6 +276,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
+                        registerReserva(data.arrEmpleado[i].getId(), data.arrEmpleado[i].getName(), idPark);
                         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -263,6 +292,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
+                        registerReserva(data.arrEmpleado[i].getId(), data.arrEmpleado[i].getName(), idPark);
                         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -274,6 +304,25 @@ public class formularioRequest extends javax.swing.JFrame {
         return false;
     }
 
+    public void registerReserva(int cedula, String name, String park) {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        String date = now.format(formatter);
+        if (countReserve < historialReserve.length) {
+            historialReserve[countReserve] = new Historial(cedula, name, park, date);
+            countReserve++;
+        } else {
+            //Elimina el primero en colocar
+            countReserve = 0;
+        }
+    }
+
+    public void mostrarHistorial() {
+        for (int i = 0; i < countReserve; i++) {
+            JOptionPane.showMessageDialog(null, historialReserve[i].toString());
+        }
+    }
+
     //Ver si el empleado es o director o discapacitado 
     //Verificar si el campo es valido
 //    private void idValidator(int id){
@@ -281,9 +330,10 @@ public class formularioRequest extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backBotton;
+    private javax.swing.JButton backBotton1;
     private javax.swing.JButton bottonValidator;
     private javax.swing.JLabel cautionText;
+    private javax.swing.JButton historialBotton;
     private javax.swing.JTextArea idInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

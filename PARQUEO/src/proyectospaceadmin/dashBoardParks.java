@@ -134,7 +134,7 @@ public class dashBoardParks extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Parqueo S3
     private void parkBttnS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkBttnS3ActionPerformed
         ParkS3 parkS3 = new ParkS3(matrizS1,matrizS2,matrizS3);
         parkS3.setSize(900, 658);
@@ -146,7 +146,7 @@ public class dashBoardParks extends javax.swing.JFrame {
         contentPark.revalidate();
         contentPark.repaint();
     }//GEN-LAST:event_parkBttnS3ActionPerformed
-
+    //Parqueo S1
     private void parkBttnS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkBttnS1ActionPerformed
         ParkS1 parkS1 = new ParkS1(matrizS1,matrizS2,matrizS3);
         parkS1.setSize(900, 658);
@@ -157,7 +157,7 @@ public class dashBoardParks extends javax.swing.JFrame {
         contentPark.revalidate();
         contentPark.repaint();
     }//GEN-LAST:event_parkBttnS1ActionPerformed
-
+    //Parqueo S2
     private void parkBttnS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkBttnS2ActionPerformed
         ParkS2 parkS2 = new ParkS2(matrizS1,matrizS2,matrizS3);
         parkS2.setSize(900, 658);
