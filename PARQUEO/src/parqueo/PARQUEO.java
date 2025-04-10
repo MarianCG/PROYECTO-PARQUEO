@@ -4,12 +4,20 @@
  */
 package parqueo;
 
+<<<<<<< HEAD
+import proyectospaceadmin.dashBoardParks;
+=======
 import java.util.Random;
 import javax.swing.JOptionPane;
+>>>>>>> origin/main
 
 public class PARQUEO {
 
     public static void main(String[] args) {
+<<<<<<< HEAD
+        dashBoardParks dashBoardMenu = new dashBoardParks();
+        dashBoardMenu.setVisible(true);
+=======
         char[][] S1 = new char[4][5];
         char[][] S2 = new char[5][5];
         char[][] S3 = new char[6][5];
@@ -78,5 +86,6 @@ public class PARQUEO {
             mensaje += "\n";
         }
         JOptionPane.showMessageDialog(null, mensaje.toString(), "Distribución del Parqueo", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+>>>>>>> origin/main
     }
 }
