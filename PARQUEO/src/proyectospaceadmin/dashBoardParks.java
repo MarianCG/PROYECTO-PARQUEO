@@ -16,14 +16,8 @@ public class dashBoardParks extends javax.swing.JFrame {
      * Este JFrame es para poder reservar los espacios del parqueo y ver que
      * tipo de parqueo
      */
-    private String[][] matrizS1;
-    private String[][] matrizS2;
-    private String[][] matrizS3;
 
-    public dashBoardParks(String[][] matrizS1, String[][] matrizS2, String[][] matrizS3) {
-        this.matrizS1 = matrizS1;
-        this.matrizS2 = matrizS2;
-        this.matrizS3 = matrizS3;
+    public dashBoardParks() {
         initComponents();
     }
 //
@@ -136,7 +130,7 @@ public class dashBoardParks extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     //Parqueo S3
     private void parkBttnS3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkBttnS3ActionPerformed
-        ParkS3 parkS3 = new ParkS3(matrizS1,matrizS2,matrizS3);
+        ParkS3 parkS3 = new ParkS3();
         parkS3.setSize(900, 658);
         parkS3.setLocation(0, 0);
         
@@ -148,7 +142,7 @@ public class dashBoardParks extends javax.swing.JFrame {
     }//GEN-LAST:event_parkBttnS3ActionPerformed
     //Parqueo S1
     private void parkBttnS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkBttnS1ActionPerformed
-        ParkS1 parkS1 = new ParkS1(matrizS1,matrizS2,matrizS3);
+        ParkS1 parkS1 = new ParkS1();
         parkS1.setSize(900, 658);
         parkS1.setLocation(0, 0);
 
@@ -159,7 +153,7 @@ public class dashBoardParks extends javax.swing.JFrame {
     }//GEN-LAST:event_parkBttnS1ActionPerformed
     //Parqueo S2
     private void parkBttnS2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkBttnS2ActionPerformed
-        ParkS2 parkS2 = new ParkS2(matrizS1,matrizS2,matrizS3);
+        ParkS2 parkS2 = new ParkS2();
         parkS2.setSize(900, 658);
         parkS2.setLocation(0, 0);
 
@@ -195,6 +189,13 @@ public class dashBoardParks extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(dashBoardParks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+                /* Create and display the form */
+         java.awt.EventQueue.invokeLater(new Runnable() {
+             public void run() {
+                 new dashBoardParks().setVisible(true);
+             }
+         });
 
     }
 

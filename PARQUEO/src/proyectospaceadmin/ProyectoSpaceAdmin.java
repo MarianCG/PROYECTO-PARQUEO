@@ -20,16 +20,11 @@ public class ProyectoSpaceAdmin {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //Datos init
-
-
 
 //      **INICIALIZACION DE PANTALLA**
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new dashBoardParks(Data.matrizS1,Data.matrizS2,Data.matrizS3).setVisible(true); // Aquí pasas el arreglo de empleados
-            }
-        });
+        dashBoardParks parqueo = new dashBoardParks();
+         
+         parqueo.setVisible(true);
     }
 
 }

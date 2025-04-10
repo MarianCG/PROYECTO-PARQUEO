@@ -4,8 +4,6 @@
  */
 package proyectospaceadmin;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,10 +27,10 @@ public class formularioRequest extends javax.swing.JFrame {
     /**
      * Creates new form formularioRequest
      */
-    public formularioRequest(String[][] parkS1, String[][] parkS2, String[][] parkS3) {
-        this.parkS1 = parkS1;
-        this.parkS2 = parkS2;
-        this.parkS3 = parkS3;
+    public formularioRequest() {
+        this.parkS1 = Data.matrizS1;
+        this.parkS2 = Data.matrizS2;
+        this.parkS3 = Data.matrizS3;
         initComponents();
     }
 
@@ -213,7 +211,7 @@ public class formularioRequest extends javax.swing.JFrame {
 
     private void backBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBotton1ActionPerformed
         // TODO add your handling code here:
-         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
+         dashBoardParks parqueo = new dashBoardParks();
          parqueo.setVisible(true);
          this.setVisible(false);
     }//GEN-LAST:event_backBotton1ActionPerformed
@@ -263,7 +261,7 @@ public class formularioRequest extends javax.swing.JFrame {
                             parkS3[datoX][datoY] = "P";
                         }
                         HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
-                        dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
+                        dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
                         this.setVisible(false);
                     }
@@ -279,7 +277,7 @@ public class formularioRequest extends javax.swing.JFrame {
                             parkS3[datoX][datoY] = "P";
                         }
                         HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
-                        dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
+                        dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
                         this.setVisible(false);
                     }
@@ -295,7 +293,7 @@ public class formularioRequest extends javax.swing.JFrame {
                             parkS3[datoX][datoY] = "P";
                         }
                         HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
-                        dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
+                        dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
                         this.setVisible(false);
                     }
@@ -305,13 +303,6 @@ public class formularioRequest extends javax.swing.JFrame {
         }
         return false;
     }
-
- 
-    //Ver si el empleado es o director o discapacitado 
-    //Verificar si el campo es valido
-//    private void idValidator(int id){
-//        if()
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBotton1;
