@@ -6,6 +6,7 @@ package proyectospaceadmin;
 
 import java.awt.BorderLayout;
 
+
 /**
  *
  * @author porto
@@ -45,6 +46,8 @@ public class dashBoardParks extends javax.swing.JFrame {
         parkBttnS2 = new javax.swing.JButton();
         parkBttnS3 = new javax.swing.JButton();
         contentPark = new javax.swing.JPanel();
+        historialBotton = new javax.swing.JButton();
+        modifyBotton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
@@ -77,15 +80,43 @@ public class dashBoardParks extends javax.swing.JFrame {
 
         contentPark.setBackground(new java.awt.Color(102, 102, 102));
 
+        historialBotton.setBackground(new java.awt.Color(255, 255, 0));
+        historialBotton.setForeground(new java.awt.Color(0, 0, 0));
+        historialBotton.setText("Historial");
+        historialBotton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historialBottonActionPerformed(evt);
+            }
+        });
+
+        modifyBotton.setBackground(new java.awt.Color(0, 255, 255));
+        modifyBotton.setForeground(new java.awt.Color(0, 0, 0));
+        modifyBotton.setText("Modificar");
+        modifyBotton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyBottonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout contentParkLayout = new javax.swing.GroupLayout(contentPark);
         contentPark.setLayout(contentParkLayout);
         contentParkLayout.setHorizontalGroup(
             contentParkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(contentParkLayout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(historialBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122)
+                .addComponent(modifyBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         contentParkLayout.setVerticalGroup(
             contentParkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 658, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contentParkLayout.createSequentialGroup()
+                .addContainerGap(541, Short.MAX_VALUE)
+                .addGroup(contentParkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(historialBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modifyBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -163,6 +194,20 @@ public class dashBoardParks extends javax.swing.JFrame {
         contentPark.repaint();        // TODO add your handling code here:
     }//GEN-LAST:event_parkBttnS2ActionPerformed
 
+    private void historialBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialBottonActionPerformed
+        HistorialPark.showHistorial();
+    }//GEN-LAST:event_historialBottonActionPerformed
+
+    private void modifyBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBottonActionPerformed
+        // TODO add your handling code here:
+        modifyPark modify = new modifyPark();
+        modify.setSize(824, 634);
+        modify.setLocation(0, 0);
+        
+        modify.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_modifyBottonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -201,7 +246,9 @@ public class dashBoardParks extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel contentPark;
+    private javax.swing.JButton historialBotton;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton modifyBotton;
     private javax.swing.JButton parkBttnS1;
     private javax.swing.JButton parkBttnS2;
     private javax.swing.JButton parkBttnS3;

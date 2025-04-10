@@ -16,9 +16,6 @@ public class formularioRequest extends javax.swing.JFrame {
     private int datoY;
     private String status;
     private String idPark;
-    private String[][] parkS1;
-    private String[][] parkS2;
-    private String[][] parkS3;
     String fecha = java.time.LocalDate.now().toString();
 
     //importacion de tabla 
@@ -28,9 +25,6 @@ public class formularioRequest extends javax.swing.JFrame {
      * Creates new form formularioRequest
      */
     public formularioRequest() {
-        this.parkS1 = Data.matrizS1;
-        this.parkS2 = Data.matrizS2;
-        this.parkS3 = Data.matrizS3;
         initComponents();
     }
 
@@ -74,9 +68,8 @@ public class formularioRequest extends javax.swing.JFrame {
         javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
         idInput = new javax.swing.JTextArea();
         cautionText = new javax.swing.JLabel();
-        historialBotton = new javax.swing.JButton();
         bottonValidator = new javax.swing.JButton();
-        backBotton1 = new javax.swing.JButton();
+        backBotton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,15 +88,6 @@ public class formularioRequest extends javax.swing.JFrame {
         cautionText.setFont(new java.awt.Font("Helvetica Neue", 0, 20)); // NOI18N
         cautionText.setForeground(new java.awt.Color(204, 0, 51));
 
-        historialBotton.setBackground(new java.awt.Color(255, 255, 0));
-        historialBotton.setForeground(new java.awt.Color(0, 0, 0));
-        historialBotton.setText("Historial");
-        historialBotton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historialBottonActionPerformed(evt);
-            }
-        });
-
         bottonValidator.setBackground(new java.awt.Color(0, 153, 0));
         bottonValidator.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         bottonValidator.setText("Listo");
@@ -113,11 +97,11 @@ public class formularioRequest extends javax.swing.JFrame {
             }
         });
 
-        backBotton1.setBackground(new java.awt.Color(153, 0, 0));
-        backBotton1.setText("Atras");
-        backBotton1.addActionListener(new java.awt.event.ActionListener() {
+        backBotton.setBackground(new java.awt.Color(153, 0, 0));
+        backBotton.setText("Atras");
+        backBotton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBotton1ActionPerformed(evt);
+                backBottonActionPerformed(evt);
             }
         });
 
@@ -129,21 +113,16 @@ public class formularioRequest extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(172, 172, 172)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                        .addComponent(historialBotton))
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(385, 385, 385)
-                                .addComponent(bottonValidator, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(385, 385, 385)
+                        .addComponent(bottonValidator, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(96, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,16 +130,14 @@ public class formularioRequest extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(16, 16, 16)
-                    .addComponent(backBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(822, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(historialBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(204, 204, 204)
@@ -177,7 +154,7 @@ public class formularioRequest extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(16, 16, 16)
-                    .addComponent(backBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(747, Short.MAX_VALUE)))
         );
 
@@ -195,12 +172,6 @@ public class formularioRequest extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //Botton Back
-    private void historialBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialBottonActionPerformed
-        HistorialPark.showHistorial();
-        JOptionPane.showMessageDialog(null, "Imprimiendo");
-    }//GEN-LAST:event_historialBottonActionPerformed
-
     //Botton Validador
     private void bottonValidatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonValidatorActionPerformed
         int id = Integer.parseInt(idInput.getText());
@@ -209,12 +180,12 @@ public class formularioRequest extends javax.swing.JFrame {
             cautionText.setText("Este usuario no tiene permisos para reservar aca");
     }//GEN-LAST:event_bottonValidatorActionPerformed
 
-    private void backBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBotton1ActionPerformed
+    private void backBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBottonActionPerformed
         // TODO add your handling code here:
          dashBoardParks parqueo = new dashBoardParks();
          parqueo.setVisible(true);
          this.setVisible(false);
-    }//GEN-LAST:event_backBotton1ActionPerformed
+    }//GEN-LAST:event_backBottonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,13 +225,13 @@ public class formularioRequest extends javax.swing.JFrame {
                     boolean tipo = data.arrEmpleado[i].isDirector();
                     if (tipo == true) {
                         if (idPark == "S1") {
-                            parkS1[datoX][datoY] = "P";
+                            Data.matrizS1[datoX][datoY] = "P";
                         } else if (idPark == "S2") {
-                            parkS2[datoX][datoY] = "P";
+                            Data.matrizS2[datoX][datoY] = "P";
                         } else if (idPark == "S3") {
-                            parkS3[datoX][datoY] = "P";
+                            Data.matrizS3[datoX][datoY] = "P";
                         }
-                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
+                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1));
                         dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -270,13 +241,13 @@ public class formularioRequest extends javax.swing.JFrame {
                     boolean tipo = data.arrEmpleado[i].isdiscapacitado();
                     if (tipo == true) {
                         if (idPark == "S1") {
-                            parkS1[datoX][datoY] = "P";
+                            Data.matrizS1[datoX][datoY] = "P";
                         } else if (idPark == "S2") {
-                            parkS2[datoX][datoY] = "P";
+                            Data.matrizS2[datoX][datoY] = "P";
                         } else if (idPark == "S3") {
-                            parkS3[datoX][datoY] = "P";
+                            Data.matrizS3[datoX][datoY] = "P";
                         }
-                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
+                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1) );
                         dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -286,13 +257,13 @@ public class formularioRequest extends javax.swing.JFrame {
                     boolean tipo = true;
                     if (tipo == true) {
                         if (idPark == "S1") {
-                            parkS1[datoX][datoY] = "P";
+                            Data.matrizS1[datoX][datoY] = "P";
                         } else if (idPark == "S2") {
-                            parkS2[datoX][datoY] = "P";
+                            Data.matrizS2[datoX][datoY] = "P";
                         } else if (idPark == "S3") {
-                            parkS3[datoX][datoY] = "P";
+                            Data.matrizS3[datoX][datoY] = "P";
                         }
-                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
+                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1) );
                         dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -305,10 +276,9 @@ public class formularioRequest extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backBotton1;
+    private javax.swing.JButton backBotton;
     private javax.swing.JButton bottonValidator;
     private javax.swing.JLabel cautionText;
-    private javax.swing.JButton historialBotton;
     private javax.swing.JTextArea idInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
