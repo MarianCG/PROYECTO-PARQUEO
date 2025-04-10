@@ -26,7 +26,6 @@ public class ParkS1 extends javax.swing.JPanel {
     private String[][] matrizS3;
 
     public ParkS1(String[][] matrizS1, String[][] matrizS2, String[][] matrizS3) {
-        this.matrizS1 = matrizS1;
         this.matrizS2 = matrizS2;
         this.matrizS3 = matrizS3;
         initComponents();
@@ -72,7 +71,7 @@ public class ParkS1 extends javax.swing.JPanel {
 
         panelS1.revalidate();
         panelS1.repaint();
-        valueBottons(rowS1, columS1, matrizS1); // Llamar sin parámetros
+        valueBottons(rowS1, columS1, Data.matrizS1); // Llamar sin parámetros
     }
 
     //Clase de accion de boton 
@@ -85,7 +84,7 @@ public class ParkS1 extends javax.swing.JPanel {
             for (int i = 0; i < rowS1; i++) {
                 for (int j = 0; j < columS1; j++) {
                     if (e.getSource().equals(parkS1[i][j])) {
-                        if (matrizS1[i][j] == "P") {
+                        if (Data.matrizS1[i][j] == "P") {
                             JOptionPane.showMessageDialog(null, "Elije otro espacio este no esta disponible");
                         } else {
                             formularioRequest form = new formularioRequest(matrizS1, matrizS2, matrizS3);

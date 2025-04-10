@@ -10,21 +10,21 @@ import javax.swing.JOptionPane;
  *
  * @author porto
  */
-public class Historial {
+public class HistorialPark {
     private static String[][] historialReservas = new String[20][3];
-    private static int contador = 0;
+    private static int count = 0;
 
-    public static void agregarReserva(String nombre, int cedula, String fecha) {
-        if (contador < historialReservas.length) {
-            historialReservas[contador][0] = nombre;
-            historialReservas[contador][1] = String.valueOf(cedula);
-            historialReservas[contador][2] = fecha;
-            contador++;
+    public static void addReserve(String name, int id, String date) {
+        if (count < historialReservas.length) {
+            historialReservas[count][0] = name;
+            historialReservas[count][1] = String.valueOf(id);
+            historialReservas[count][2] = date;
+            count++;
         }
     }
 
-    public static void mostrarHistorial() {
-        for (int i = 0; i < contador; i++) {
+    public static void showHistorial() {
+        for (int i = 0; i < count; i++) {
             JOptionPane.showMessageDialog(null,"Reserva " + (i + 1) + ": "
                     + historialReservas[i][0] + " - Cédula: "
                     + historialReservas[i][1] + " - Fecha: "
@@ -37,7 +37,7 @@ public class Historial {
     }
 
     public static int getCantidadReservas() {
-        return contador;
+        return count;
     }
     
 }

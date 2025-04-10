@@ -199,7 +199,7 @@ public class formularioRequest extends javax.swing.JFrame {
 
     //Botton Back
     private void historialBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialBottonActionPerformed
-        Historial.mostrarHistorial();
+        HistorialPark.showHistorial();
         JOptionPane.showMessageDialog(null, "Imprimiendo");
     }//GEN-LAST:event_historialBottonActionPerformed
 
@@ -213,6 +213,9 @@ public class formularioRequest extends javax.swing.JFrame {
 
     private void backBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBotton1ActionPerformed
         // TODO add your handling code here:
+         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
+         parqueo.setVisible(true);
+         this.setVisible(false);
     }//GEN-LAST:event_backBotton1ActionPerformed
 
     /**
@@ -259,7 +262,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
-                        Historial.agregarReserva(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
+                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
                         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -275,7 +278,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
-                        Historial.agregarReserva(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
+                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
                         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -291,7 +294,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             parkS3[datoX][datoY] = "P";
                         }
-                        Historial.agregarReserva(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
+                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha );
                         dashBoardParks parqueo = new dashBoardParks(parkS1, parkS2, parkS3);
                         parqueo.setVisible(true);
                         this.setVisible(false);

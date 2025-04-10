@@ -11,6 +11,29 @@ package proyectospaceadmin;
 public class Data {
 
     public Empleado arrEmpleado[];
+    
+    public static String matrizS1[][] = {
+            {"D", "P", "O", "O"},
+            {"O", "O", "O", "O"},
+            {"O", "P", "O", "O"},
+            {"E", "E", "E", "O"},
+            {"P", "O", "O", "D"}
+        };
+    public static String matrizS2[][] = {
+            {"P", "P", "O", "O", "P"},
+            {"O", "D", "O", "O", "O"},
+            {"O", "P", "O", "O", "O"},
+            {"O", "O", "O", "O", "P"},
+            {"E", "E", "E", "P", "P"}
+        };
+    public static String matrizS3[][] = {
+            {"P", "P", "O", "O", "P"},
+            {"O", "O", "O", "O", "O"},
+            {"O", "P", "O", "O", "O"},
+            {"O", "O", "O", "O", "P"},
+            {"P", "P", "D", "P", "P"},
+            {"E", "E", "E", "O", "D"}
+        };
 
     public Data(){
         //Tabla de empleados
@@ -22,7 +45,7 @@ public class Data {
         arrEmpleado[3] = new Empleado("David", "Moreno", 98765432, true, true);
         arrEmpleado[4] = new Empleado("Jose", "Apestegui", 118180881, false, false);
         
-
+        
     }
 
 }
