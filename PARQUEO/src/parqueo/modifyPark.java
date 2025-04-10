@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package proyectospaceadmin;
+package parqueo;
 
 import java.awt.BorderLayout;
 
@@ -114,15 +114,14 @@ public class modifyPark extends javax.swing.JFrame {
                             .addComponent(filaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(242, 242, 242)
                             .addComponent(columComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(backBotton1))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(284, 284, 284)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(selectBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(confirmBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(panelLayout.createSequentialGroup()
+                            .addGap(15, 15, 15)
+                            .addComponent(backBotton1))
+                        .addGroup(panelLayout.createSequentialGroup()
+                            .addGap(284, 284, 284)
+                            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(selectBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(confirmBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(panelLayout.createSequentialGroup()
                             .addGap(239, 239, 239)
                             .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
