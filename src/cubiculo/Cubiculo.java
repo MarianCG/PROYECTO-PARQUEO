@@ -4,9 +4,6 @@
  */
 package cubiculo;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,24 +16,18 @@ public class Cubiculo {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
         cubiculo_reserva sistemaCubiculos = new cubiculo_reserva(15);
 
-        habitacion[] cubiculos = new habitacion[15];
-        sistemaCubiculos.setVector_cubiculo(cubiculos);
-
-        for (int i = 0; i < cubiculos.length; i++) {
-            cubiculos[i] = new habitacion(i + 1, "Cubículo" + (char) ('A' + i), false, new Date(), null);
-
-        }
+        
         //Crear Empleados Temp
-        empleado arrempleado[] = new empleado[5];
+        Empleado arrempleado[] = new Empleado[5];
 
-        arrempleado[0] = new empleado("Erick", "Portocarrero", 118180881, true, false);
-        arrempleado[1] = new empleado("Andres", "Viquez", 12345678, false, true);
-        arrempleado[2] = new empleado("Kristel", "Vargas", 208460639, false, false);
-        arrempleado[3] = new empleado("David", "Moreno", 98765432, true, true);
-        arrempleado[4] = new empleado("Jose", "Apestegui", 118180881, false, false);
+        arrempleado[0] = new Empleado("Erick", "Portocarrero", 118180881, true, false);
+        arrempleado[1] = new Empleado("Andres", "Viquez", 12345678, false, true);
+        arrempleado[2] = new Empleado("Kristel", "Vargas", 208460639, false, false);
+        arrempleado[3] = new Empleado("David", "Moreno", 98765432, true, true);
+        arrempleado[4] = new Empleado("Jose", "Apestegui", 118180881, false, false);
 
         boolean continuar = true;
 
@@ -51,87 +42,79 @@ public class Cubiculo {
                 case "1":
                     int codigoCubiculo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el codigo del cubículo (1-15):"));
                     if (codigoCubiculo < 1 || codigoCubiculo > 15) {
-                        JOptionPane.showMessageDialog(null, "Codigo de cubículo inválido.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Numero de cubículo incorrecto.");
                         break;
 
                     }
                     if (sistemaCubiculos.getVector_cubiculos(codigoCubiculo - 1).getEsta_ocupada()) {
-                        JOptionPane.showMessageDialog(null, "El cubículo ya esta ocupado.", "Error", JOptionPane.ERROR_MESSAGE);
-                    } else {
+                        JOptionPane.showMessageDialog(null, "El cubículo ya se encuentra ocupado.");
+                        break;
+                    }  
+                        int idEmpleado = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del empleado que reserva el cubículo "));
+                        if (!searchWorker(idEmpleado, arrempleado)) {
+                            JOptionPane.showMessageDialog(null, "El ID no corresponde a un empleado registrado.");
+                            break;
 
-                        try {
-                            String horaInicioStr = JOptionPane.showInputDialog("Ingrese la hora de inicio (hh:mm (AM/PM)");
-                            int idEmpleado = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del empleado que reserva el cubículo "));
-                            if (!searchWorker(idEmpleado, arrempleado)) {
-                                JOptionPane.showMessageDialog(null, "El ID no corresponde a un empleado registrado.", "Error", JOptionPane.ERROR_MESSAGE);
-                                break;
-
-                            }
-                            if (sistemaCubiculos.reservaCubiculo(codigoCubiculo - 1, horaInicioStr, idEmpleado)) {
-                                JOptionPane.showMessageDialog(null, "Reserva realiazada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Error al reservar el cubículo.", "Error", JOptionPane.ERROR_MESSAGE);
-                            }
-                        } catch (ParseException e) {
-                            JOptionPane.showMessageDialog(null, "Error al reservar el cubículo", "Error", JOptionPane.ERROR_MESSAGE);
                         }
-                    }
-                    break;
-
+                       boolean reservado = sistemaCubiculos.reservaCubiculo(codigoCubiculo - 1, idEmpleado);
+                       if (reservado){
+                           JOptionPane.showMessageDialog(null, "Reserva realizada");
+                       } else {
+                           JOptionPane.showMessageDialog(null, "No se pudo realizar la reserva");
+                       }
+                       break;
+                            
                 case "2":
                     int codigoMod = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el código del cubículo a modificar (1-15)"));
                     if (codigoMod < 1 || codigoMod > 15) {
-                        JOptionPane.showMessageDialog(null, "Código de cubículo inválido", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Numero de cubículo incorrecto.");
                         break;
 
                     }
+                    if (!sistemaCubiculos.getVector_cubiculos(codigoMod - 1).getEsta_ocupada()){
+                        JOptionPane.showMessageDialog(null, "El cubículo no tiene reserva");
+                        break;
+                    }
 
-                    habitacion cubiculoMod = sistemaCubiculos.getVector_cubiculos(codigoMod - 1);
-                    if (cubiculoMod.getEsta_ocupada()) {
-                        String nuevaHoraInicio = JOptionPane.showInputDialog("Ingrese la nueva hora de inicio (hh:mm AM/PM):");
-                        try {
-                            if (sistemaCubiculos.modificarReserva(codigoMod - 1, nuevaHoraInicio)) {
-                                JOptionPane.showMessageDialog(null, "Reserva modificada", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                   
+                        int idEmpleadoMod = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del empleado"));
+                        if (!searchWorker(idEmpleadoMod, arrempleado)) {
+                            JOptionPane.showMessageDialog(null, "El ID no corresponde a un empleado registrado.");
+                            break;
 
-                            } else {
-                                JOptionPane.showMessageDialog(null, "No se pudo modificar la reserva", "Error", JOptionPane.ERROR_MESSAGE);
-                            }
-                        } catch (ParseException e) {
-                            JOptionPane.showMessageDialog(null, "Error al procesar la nueva hora", "Error", JOptionPane.ERROR_MESSAGE);
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "El cubículo no tiene una reserva activa", "Error", JOptionPane.ERROR_MESSAGE);
+                        boolean modificado = sistemaCubiculos.modificarReserva(codigoMod - 1, idEmpleadoMod);
+                        if (modificado){
+                            JOptionPane.showMessageDialog(null, "Reserva modificada");
+                        }
+                        
+
+                     else {
+                        JOptionPane.showMessageDialog(null, "El cubículo no tiene una reserva activa");
                     }
                     break; //QUEDE AQUI
 
                 case "3":
-                    boolean disponibilidad = sistemaCubiculos.existenCubiculosDisponibles();
-                    if (disponibilidad) {
-                        JOptionPane.showMessageDialog(null, "Existen cubículos disponibles", "Disponibilidad", JOptionPane.INFORMATION_MESSAGE);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Nohay cubículos disponibles.", "Disponibilidad", JOptionPane.INFORMATION_MESSAGE);
+                    if (sistemaCubiculos.existenCubiculosDisponibles()){
+                        JOptionPane.showMessageDialog(null, "Existen cubículos disponibles");
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(null, "No hay cubículos disponibles.");
                     }
                     break;
 
                 case "4":
                     continuar = false;
-                    JOptionPane.showMessageDialog(null, "Saliendo del sistema.", "Gracias", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "¡GRACIAS!");
                     break;
 
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción inválida, intente nuevamente", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
 
     }
 
-    private static cubiculo_reserva cubiculo_reserva(int i) {
-        return new cubiculo_reserva(i);
-    }
-
-    private static boolean searchWorker(int ID, empleado[] arrempleado) {
+    private static boolean searchWorker(int ID, Empleado[] arrempleado) {
         for (int i = 0; i < arrempleado.length; i++) {
             if (arrempleado[i] != null && arrempleado[i].getId() == ID) {
                 return true;
@@ -140,5 +123,6 @@ public class Cubiculo {
         return false;
 
     }
-   
+
 }
+//aaaaaaa

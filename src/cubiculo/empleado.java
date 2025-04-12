@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cubiculo;
+
+import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
@@ -10,14 +13,14 @@ import javax.swing.JOptionPane;
  *
  * @author genni
  */
-public class empleado {
+public class Empleado {
     private String name;
     private String lastname;
     private int id;
     private boolean director;
     private boolean discapacitado; 
 
-    public empleado(String nombre, String apellido, int id, boolean director, boolean discapacitado) {
+    public Empleado(String nombre, String apellido, int id, boolean director, boolean discapacitado) {
         this.name = nombre;
         this.lastname = apellido;
         this.id = id;
@@ -78,8 +81,22 @@ public class empleado {
         JOptionPane.showMessageDialog(null, "Datos del empleado: " + info);
     }
     
-      
+      private static boolean searchWorker(int ID, Empleado[] arrempleado) {
+        for (int i = 0; i < arrempleado.length; i++) {
+            if (arrempleado[i] != null && arrempleado[i].getId() == ID) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+}
    
     
-}
+
     
+    
+
+    
+

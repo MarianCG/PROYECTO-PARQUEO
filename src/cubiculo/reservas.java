@@ -12,14 +12,14 @@ public class reservas {
     private String horaInicio;
     private String horaFin;
     private int idEmpleado;
-    private int codigoCubiculo;
+    
     
 
-    public reservas(String horaInicio, String horaFin, int idEmpleado, int codigoCubiculo) {
+    public reservas(String horaInicio, String horaFin, int idEmpleado) {
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.idEmpleado = idEmpleado;
-        this.codigoCubiculo = codigoCubiculo;
+        
 
     }
 
@@ -47,13 +47,7 @@ public class reservas {
         this.idEmpleado = idEmpleado;
     }
 
-    public int getCodigoCubiculo() {
-        return codigoCubiculo;
-    }
-
-    public void setCodigoCubiculo(int codigoCubiculo) {
-        this.codigoCubiculo = codigoCubiculo;
-    }
+   
      
 
 

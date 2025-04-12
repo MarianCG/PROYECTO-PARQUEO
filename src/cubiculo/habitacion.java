@@ -13,14 +13,14 @@ public class habitacion {
     private int codigo;
     private String nombre;
     private boolean esta_ocupada;
-    private Date horaReserva;
+    private String horaReservaStr;
     private reservas reserva;
     
-    public habitacion(int codigo, String nombre, boolean esta_ocupada, Date horaReserva, reservas reserva) {
+    public habitacion(int codigo, String nombre, boolean esta_ocupada, String horaReserva, reservas reserva) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.esta_ocupada= esta_ocupada;
-        this.horaReserva = horaReserva;
+        this.horaReservaStr = horaReservaStr;
         this.reserva = reserva;
         
         
@@ -51,13 +51,7 @@ public class habitacion {
         this.esta_ocupada = esta_ocupada;
     }
 
-    public Date getHoraReserva() {
-        return horaReserva;
-    }
-
-    public void setHoraReserva(Date horaReserva) {
-        this.horaReserva = horaReserva;
-    }
+    
 
     public reservas getReserva() {
         return reserva;
@@ -65,6 +59,14 @@ public class habitacion {
 
     public void setReserva(reservas reserva) {
         this.reserva = reserva;
+    }
+
+    public String getHoraReservaStr() {
+        return horaReservaStr;
+    }
+
+    public void setHoraReservaStr(String horaReservaStr) {
+        this.horaReservaStr = horaReservaStr;
     }
 
     
