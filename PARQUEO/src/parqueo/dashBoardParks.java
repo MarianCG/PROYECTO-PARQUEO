@@ -27,7 +27,8 @@ public class dashBoardParks extends javax.swing.JFrame {
     
     public dashBoardParks() {
         initComponents();
-        setbackgraoundPanel("src/Image/formulario.jpg", jPanel1);
+        setbackgraoundPanel("src/Image/parqueoDash.jpg", jPanel1);
+        setbackgraoundPanel("src/Image/parqueoDash.jpg", contentPark);
     }
 //
 //    public static boolean idVerificator(int id) {
@@ -67,7 +68,21 @@ public class dashBoardParks extends javax.swing.JFrame {
         parkBttnS1 = new javax.swing.JButton();
         parkBttnS2 = new javax.swing.JButton();
         parkBttnS3 = new javax.swing.JButton();
-        contentPark = new javax.swing.JPanel();
+        contentPark = new javax.swing.JPanel(){
+
+            @Override
+            public void paintComponent(Graphics g) {
+                //Obtener dimensiones
+                int width = this.getSize().width;
+                int height = this.getSize().height;
+
+                if (backgraound_image != null){
+                    g.drawImage(backgraound_image, 0, 0, width, height, null);
+                }
+                super.paintComponent(g);
+            }
+
+        };
         historialBotton = new javax.swing.JButton();
         modifyBotton = new javax.swing.JButton();
         backBotton = new javax.swing.JButton();
@@ -204,7 +219,6 @@ public class dashBoardParks extends javax.swing.JFrame {
         parkS3.setSize(900, 658);
         parkS3.setLocation(0, 0);
         
-
         contentPark.removeAll();
         contentPark.add(parkS3, BorderLayout.CENTER);
         contentPark.revalidate();
@@ -215,7 +229,7 @@ public class dashBoardParks extends javax.swing.JFrame {
         ParkS1 parkS1 = new ParkS1();
         parkS1.setSize(900, 658);
         parkS1.setLocation(0, 0);
-
+        
         contentPark.removeAll();
         contentPark.add(parkS1, BorderLayout.CENTER);
         contentPark.revalidate();
@@ -226,26 +240,12 @@ public class dashBoardParks extends javax.swing.JFrame {
         ParkS2 parkS2 = new ParkS2();
         parkS2.setSize(900, 658);
         parkS2.setLocation(0, 0);
-
+        
         contentPark.removeAll();
         contentPark.add(parkS2, BorderLayout.CENTER);
         contentPark.revalidate();
         contentPark.repaint();        // TODO add your handling code here:
     }//GEN-LAST:event_parkBttnS2ActionPerformed
-
-    private void historialBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialBottonActionPerformed
-        Historial.showHistorial();
-    }//GEN-LAST:event_historialBottonActionPerformed
-
-    private void modifyBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBottonActionPerformed
-        // TODO add your handling code here:
-        modifyPark modify = new modifyPark();
-        modify.setSize(824, 634);
-        modify.setLocation(0, 0);
-        
-        modify.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_modifyBottonActionPerformed
 
     private void backBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBottonActionPerformed
         // TODO add your handling code here:
@@ -253,6 +253,20 @@ public class dashBoardParks extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBottonActionPerformed
+
+    private void modifyBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBottonActionPerformed
+        // TODO add your handling code here:
+        modifyPark modify = new modifyPark();
+        modify.setSize(824, 634);
+        modify.setLocation(0, 0);
+
+        modify.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_modifyBottonActionPerformed
+
+    private void historialBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialBottonActionPerformed
+        Historial.showHistorial();
+    }//GEN-LAST:event_historialBottonActionPerformed
 
     /**
      * @param args the command line arguments

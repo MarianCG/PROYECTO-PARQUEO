@@ -10,11 +10,17 @@ import java.awt.BorderLayout;
  *
  * @author porto
  */
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
 public class modifyPark extends javax.swing.JFrame {
 
     /**
      * Creates new form modifyPark
      */
+    private Image backgraound_image;
     String parkSelect = "";
 
     public modifyPark() {
@@ -23,6 +29,7 @@ public class modifyPark extends javax.swing.JFrame {
         filaComboBox.setVisible(false);
         columComboBox.setVisible(false);
         fila_columna_text.setVisible(false);
+        setbackgraoundPanel("src/Image/modify.jpg",panel);
     }
 
     /**
@@ -34,7 +41,21 @@ public class modifyPark extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel(){
+
+            @Override
+            public void paintComponent(Graphics g) {
+                //Obtener dimensiones
+                int width = this.getSize().width;
+                int height = this.getSize().height;
+
+                if (backgraound_image != null){
+                    g.drawImage(backgraound_image, 0, 0, width, height, null);
+                }
+                super.paintComponent(g);
+            }
+
+        };
         backBotton1 = new javax.swing.JButton();
         parkSelector = new javax.swing.JComboBox<>();
         selectBotton = new javax.swing.JButton();
@@ -45,13 +66,13 @@ public class modifyPark extends javax.swing.JFrame {
         confirmBotton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(906, 826));
-        setMinimumSize(new java.awt.Dimension(906, 826));
+        setMaximumSize(new java.awt.Dimension(900, 700));
+        setMinimumSize(new java.awt.Dimension(900, 700));
 
         panel.setBackground(new java.awt.Color(102, 102, 102));
-        panel.setMaximumSize(new java.awt.Dimension(900, 820));
-        panel.setMinimumSize(new java.awt.Dimension(900, 820));
-        panel.setPreferredSize(new java.awt.Dimension(900, 820));
+        panel.setMaximumSize(new java.awt.Dimension(900, 700));
+        panel.setMinimumSize(new java.awt.Dimension(900, 700));
+        panel.setPreferredSize(new java.awt.Dimension(900, 700));
 
         backBotton1.setBackground(new java.awt.Color(153, 0, 0));
         backBotton1.setText("Atras");
@@ -152,7 +173,7 @@ public class modifyPark extends javax.swing.JFrame {
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(filaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(columComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(selectBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(confirmBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,5 +310,11 @@ public class modifyPark extends javax.swing.JFrame {
                 columComboBox.addItem(String.valueOf(i + 1));
             }
         }
+    }
+    
+        public void setbackgraoundPanel(String rutaImage, JPanel panel) {
+        panel.setOpaque(false);
+        backgraound_image = new ImageIcon(rutaImage).getImage();
+        panel.repaint();
     }
 }

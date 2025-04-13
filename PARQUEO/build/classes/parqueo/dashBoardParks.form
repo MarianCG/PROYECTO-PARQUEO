@@ -134,6 +134,9 @@
               <Dimension value="[860, 658]"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JPanel(){&#xa;&#xa;    @Override&#xa;    public void paintComponent(Graphics g) {&#xa;        //Obtener dimensiones&#xa;        int width = this.getSize().width;&#xa;        int height = this.getSize().height;&#xa;&#xa;        if (backgraound_image != null){&#xa;            g.drawImage(backgraound_image, 0, 0, width, height, null);&#xa;        }&#xa;        super.paintComponent(g);&#xa;    }&#xa;&#xa;}"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">

@@ -8,19 +8,29 @@ package parqueo;
  *
  * @author porto
  */
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
 public class bottonsModify extends javax.swing.JPanel {
 
     /**
      * Creates new form bottonsModify
      */
+    private Image backgraound_image;
+
+    //Importar ubicacion del lugar a modificar
     int rowModify = 0;
     int columModify = 0;
     String parkModify = "";
-    public bottonsModify(int rowModify,int columModify,String parkModify) {
+
+    public bottonsModify(int rowModify, int columModify, String parkModify) {
         this.parkModify = parkModify;
         this.rowModify = rowModify;
         this.columModify = columModify;
         initComponents();
+        setbackgraoundPanel("src/Image/modify.jpg",panel);
     }
 
     /**
@@ -32,6 +42,21 @@ public class bottonsModify extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panel = new javax.swing.JPanel(){
+
+            @Override
+            public void paintComponent(Graphics g) {
+                //Obtener dimensiones
+                int width = this.getSize().width;
+                int height = this.getSize().height;
+
+                if (backgraound_image != null){
+                    g.drawImage(backgraound_image, 0, 0, width, height, null);
+                }
+                super.paintComponent(g);
+            }
+
+        };
         Director = new javax.swing.JButton();
         Disponible = new javax.swing.JButton();
         Ocupado = new javax.swing.JButton();
@@ -84,44 +109,62 @@ public class bottonsModify extends javax.swing.JPanel {
             }
         });
 
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Director, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Disponible, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Discapacitados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ocupado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(65, 65, 65))
+            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(backBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(727, Short.MAX_VALUE)))
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Disponible, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Discapacitados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(124, 124, 124)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Director, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ocupado, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(274, Short.MAX_VALUE))
+            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(backBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(694, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(257, 257, 257)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Discapacitados, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ocupado, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Disponible, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Director, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(backBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(Disponible, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(Discapacitados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(Director, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(Ocupado, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void DisponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisponibleActionPerformed
         // TODO add your handling code here:
-        Historial.deleteHistoialPark(parkModify+" "+(rowModify+1 )+" "+(columModify+1));
+        Historial.deleteHistoialPark(parkModify + " " + (rowModify + 1) + " " + (columModify + 1));
         modifyPark("O");
         exit();
     }//GEN-LAST:event_DisponibleActionPerformed
@@ -133,14 +176,14 @@ public class bottonsModify extends javax.swing.JPanel {
 
     private void DiscapacitadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiscapacitadosActionPerformed
         // TODO add your handling code here:
-        Historial.deleteHistoialPark(parkModify+" "+(rowModify+1 )+" "+(columModify+1));
+        Historial.deleteHistoialPark(parkModify + " " + (rowModify + 1) + " " + (columModify + 1));
         modifyPark("E");
         exit();
     }//GEN-LAST:event_DiscapacitadosActionPerformed
 
     private void DirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DirectorActionPerformed
         // TODO add your handling code here:
-        Historial.deleteHistoialPark(parkModify+" "+(rowModify+1 )+" "+(columModify+1));
+        Historial.deleteHistoialPark(parkModify + " " + (rowModify + 1) + " " + (columModify + 1));
         modifyPark("D");
         exit();
     }//GEN-LAST:event_DirectorActionPerformed
@@ -158,23 +201,34 @@ public class bottonsModify extends javax.swing.JPanel {
     private javax.swing.JButton Disponible;
     private javax.swing.JButton Ocupado;
     private javax.swing.JButton backBotton1;
+    private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
-    
+
     //Volver al dashbord
-    private void exit(){
+    private void exit() {
         dashBoardParks parqueo = new dashBoardParks();
         parqueo.setVisible(true);
         this.setVisible(false);
     }
+
     /**
-     * Esta metodo llega a Modificar 
-     * el lugar seleccionado de la pagina pasada
+     * Esta metodo llega a Modificar el lugar seleccionado de la pagina pasada
+     *
      * @param status Este es para ver que estado se pondra el parqueo
      */
-    private void modifyPark(String status){
-        if(parkModify=="S1") Data.matrizS1[rowModify][columModify] = status;
-        else if(parkModify=="S2") Data.matrizS2[rowModify][columModify] = status;
-        else if(parkModify=="S3") Data.matrizS3[rowModify][columModify] = status;
+    private void modifyPark(String status) {
+        if (parkModify == "S1") {
+            Data.matrizS1[rowModify][columModify] = status;
+        } else if (parkModify == "S2") {
+            Data.matrizS2[rowModify][columModify] = status;
+        } else if (parkModify == "S3") {
+            Data.matrizS3[rowModify][columModify] = status;
+        }
+    }
+
+    public void setbackgraoundPanel(String rutaImage, JPanel panel) {
+        panel.setOpaque(false);
+        backgraound_image = new ImageIcon(rutaImage).getImage();
+        panel.repaint();
     }
 }
-
