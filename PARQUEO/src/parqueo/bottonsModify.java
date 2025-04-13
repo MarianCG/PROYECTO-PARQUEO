@@ -121,6 +121,7 @@ public class bottonsModify extends javax.swing.JPanel {
 
     private void DisponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisponibleActionPerformed
         // TODO add your handling code here:
+        Historial.deleteHistoialPark(parkModify+" "+(rowModify+1 )+" "+(columModify+1));
         modifyPark("O");
         exit();
     }//GEN-LAST:event_DisponibleActionPerformed
@@ -132,12 +133,14 @@ public class bottonsModify extends javax.swing.JPanel {
 
     private void DiscapacitadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiscapacitadosActionPerformed
         // TODO add your handling code here:
+        Historial.deleteHistoialPark(parkModify+" "+(rowModify+1 )+" "+(columModify+1));
         modifyPark("E");
         exit();
     }//GEN-LAST:event_DiscapacitadosActionPerformed
 
     private void DirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DirectorActionPerformed
         // TODO add your handling code here:
+        Historial.deleteHistoialPark(parkModify+" "+(rowModify+1 )+" "+(columModify+1));
         modifyPark("D");
         exit();
     }//GEN-LAST:event_DirectorActionPerformed
@@ -163,6 +166,11 @@ public class bottonsModify extends javax.swing.JPanel {
         parqueo.setVisible(true);
         this.setVisible(false);
     }
+    /**
+     * Esta metodo llega a Modificar 
+     * el lugar seleccionado de la pagina pasada
+     * @param status Este es para ver que estado se pondra el parqueo
+     */
     private void modifyPark(String status){
         if(parkModify=="S1") Data.matrizS1[rowModify][columModify] = status;
         else if(parkModify=="S2") Data.matrizS2[rowModify][columModify] = status;

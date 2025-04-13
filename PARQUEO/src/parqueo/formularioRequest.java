@@ -9,12 +9,19 @@ package parqueo;
  *
  * @author porto
  */
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 public class formularioRequest extends javax.swing.JFrame {
 
     private int datoX;
     private int datoY;
     private String status;
     private String idPark;
+    private Image backgraound_image;
     String fecha = java.time.LocalDate.now().toString();
 
     //importacion de tabla 
@@ -25,6 +32,7 @@ public class formularioRequest extends javax.swing.JFrame {
      */
     public formularioRequest() {
         initComponents();
+        setbackgraoundPanel("src/Image/formulario.jpg", backImage);
     }
 
 //Devolver la ubicacion del boton
@@ -62,7 +70,21 @@ public class formularioRequest extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        backImage = new javax.swing.JPanel(){
+
+            @Override
+            public void paintComponent(Graphics g) {
+                //Obtener dimensiones
+                int width = this.getSize().width;
+                int height = this.getSize().height;
+
+                if (backgraound_image != null){
+                    g.drawImage(backgraound_image, 0, 0, width, height, null);
+                }
+                super.paintComponent(g);
+            }
+
+        };
         jLabel1 = new javax.swing.JLabel();
         javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
         idInput = new javax.swing.JTextArea();
@@ -71,13 +93,24 @@ public class formularioRequest extends javax.swing.JFrame {
         backBotton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(900, 720));
+        setMinimumSize(new java.awt.Dimension(900, 720));
+        setPreferredSize(new java.awt.Dimension(900, 720));
+        setSize(new java.awt.Dimension(900, 720));
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        backImage.setBackground(new java.awt.Color(102, 102, 102));
+        backImage.setMaximumSize(new java.awt.Dimension(900, 720));
+        backImage.setMinimumSize(new java.awt.Dimension(900, 720));
+        backImage.setPreferredSize(new java.awt.Dimension(900, 820));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Formulario para el parqueo");
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ID:");
 
         idInput.setColumns(20);
@@ -104,68 +137,69 @@ public class formularioRequest extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout backImageLayout = new javax.swing.GroupLayout(backImage);
+        backImage.setLayout(backImageLayout);
+        backImageLayout.setHorizontalGroup(
+            backImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backImageLayout.createSequentialGroup()
+                .addGroup(backImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backImageLayout.createSequentialGroup()
                         .addGap(172, 172, 172)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
-                        .addComponent(bottonValidator, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(backImageLayout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(96, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backImageLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(298, 298, 298))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(backImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backImageLayout.createSequentialGroup()
+                        .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(298, 298, 298))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backImageLayout.createSequentialGroup()
+                        .addComponent(bottonValidator, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(347, 347, 347))))
+            .addGroup(backImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(backImageLayout.createSequentialGroup()
                     .addGap(16, 16, 16)
                     .addComponent(backBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(822, Short.MAX_VALUE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        backImageLayout.setVerticalGroup(
+            backImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backImageLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(backImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backImageLayout.createSequentialGroup()
                         .addGap(204, 204, 204)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(177, 177, 177))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(backImageLayout.createSequentialGroup()
+                        .addGap(132, 132, 132)
                         .addComponent(cautionText, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                 .addComponent(bottonValidator, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(208, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(67, 67, 67))
+            .addGroup(backImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(backImageLayout.createSequentialGroup()
                     .addGap(16, 16, 16)
                     .addComponent(backBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(747, Short.MAX_VALUE)))
+                    .addContainerGap(741, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(backImage, javax.swing.GroupLayout.DEFAULT_SIZE, 906, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(backImage, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -230,7 +264,8 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             Data.matrizS3[datoX][datoY] = "P";
                         }
-                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1));
+                        Historial.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1));
+                        JOptionPane.showMessageDialog(null, "Reserva exitosa");
                         dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -246,7 +281,8 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             Data.matrizS3[datoX][datoY] = "P";
                         }
-                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1) );
+                        Historial.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1) );
+                        JOptionPane.showMessageDialog(null, "Reserva exitosa");
                         dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -262,7 +298,8 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             Data.matrizS3[datoX][datoY] = "P";
                         }
-                        HistorialPark.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1) );
+                        Historial.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1) );
+                        JOptionPane.showMessageDialog(null, "Reserva exitosa");
                         dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
                         this.setVisible(false);
@@ -273,13 +310,18 @@ public class formularioRequest extends javax.swing.JFrame {
         }
         return false;
     }
+        public void setbackgraoundPanel(String rutaImage, JPanel panel) {
+        panel.setOpaque(false);
+        backgraound_image = new ImageIcon(rutaImage).getImage();
+        panel.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBotton;
+    private javax.swing.JPanel backImage;
     private javax.swing.JButton bottonValidator;
     private javax.swing.JLabel cautionText;
     private javax.swing.JTextArea idInput;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

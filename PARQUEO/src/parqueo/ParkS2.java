@@ -7,11 +7,16 @@ package parqueo;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 /**
  *
  * @author porto
@@ -21,11 +26,13 @@ public class ParkS2 extends javax.swing.JPanel {
     /**
      * Creates new form ParkS1temp
      */
+    private Image backgraound_image;
 
     public ParkS2() {
 
         initComponents();
         setMatrizS2();
+        setbackgraoundPanel("src/Image/parqueoS2.jpg", panelS2);
     }
 
 // Matriz de Botones
@@ -126,7 +133,21 @@ public class ParkS2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelS2 = new javax.swing.JPanel();
+        panelS2 = new javax.swing.JPanel(){
+
+            @Override
+            public void paintComponent(Graphics g) {
+                //Obtener dimensiones
+                int width = this.getSize().width;
+                int height = this.getSize().height;
+
+                if (backgraound_image != null){
+                    g.drawImage(backgraound_image, 0, 0, width, height, null);
+                }
+                super.paintComponent(g);
+            }
+
+        };
 
         setPreferredSize(new java.awt.Dimension(500, 300));
 
@@ -154,7 +175,12 @@ public class ParkS2 extends javax.swing.JPanel {
             .addComponent(panelS2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    //Colocar Backgraound
+    public void setbackgraoundPanel(String rutaImage, JPanel panel) {
+        panel.setOpaque(false);
+        backgraound_image = new ImageIcon(rutaImage).getImage();
+        panel.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel panelS2;
