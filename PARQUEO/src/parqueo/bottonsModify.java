@@ -204,7 +204,9 @@ public class bottonsModify extends javax.swing.JPanel {
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 
-    //Volver al dashbord
+    /**
+     * Metodo para volver al dashBoard de parqueos
+     */
     private void exit() {
         dashBoardParks parqueo = new dashBoardParks();
         parqueo.setVisible(true);

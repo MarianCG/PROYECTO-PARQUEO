@@ -29,7 +29,7 @@ public class modifyPark extends javax.swing.JFrame {
         filaComboBox.setVisible(false);
         columComboBox.setVisible(false);
         fila_columna_text.setVisible(false);
-        setbackgraoundPanel("src/Image/modify.jpg",panel);
+        setbackgraoundPanel("src/Image/modify.jpg", panel);
     }
 
     /**
@@ -200,7 +200,7 @@ public class modifyPark extends javax.swing.JFrame {
         int columSelector = columComboBox.getSelectedIndex();
 
         bottonsModify panelsModify = new bottonsModify(rowSelector, columSelector, parkSelect);
-        panelsModify.setSize(823,757);
+        panelsModify.setSize(823, 757);
         panelsModify.setLocation(0, 0);
 
         panel.removeAll();
@@ -217,7 +217,9 @@ public class modifyPark extends javax.swing.JFrame {
 
     private void selectBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBottonActionPerformed
         // TODO add your handling code here:
+        //Obtiene los datos de que parqueo desea ingresar sea S1,S2,S3
         parkSelect = parkSelector.getSelectedItem().toString();
+        //Oculta botones, ComboBox e invoca nuevos
         Parqueo.setVisible(false);
         parkSelector.setVisible(false);
         fila_columna_text.setVisible(true);
@@ -286,8 +288,12 @@ public class modifyPark extends javax.swing.JFrame {
     private javax.swing.JButton selectBotton;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Este metodo es para agregar 
+     * los espacios de cada parqueo
+     * correspondiente
+     */
     private void addItemstoBox() {
-
         if (parkSelect == "S1") {
             for (int i = 0; i < 5; i++) {
                 filaComboBox.addItem(String.valueOf(i + 1));
@@ -311,8 +317,8 @@ public class modifyPark extends javax.swing.JFrame {
             }
         }
     }
-    
-        public void setbackgraoundPanel(String rutaImage, JPanel panel) {
+
+    public void setbackgraoundPanel(String rutaImage, JPanel panel) {
         panel.setOpaque(false);
         backgraound_image = new ImageIcon(rutaImage).getImage();
         panel.repaint();

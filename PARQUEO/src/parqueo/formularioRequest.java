@@ -16,13 +16,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class formularioRequest extends javax.swing.JFrame {
-
+    
+    //Importar datos para guardar la reserva
     private int datoX;
     private int datoY;
     private String status;
     private String idPark;
-    private Image backgraound_image;
     String fecha = java.time.LocalDate.now().toString();
+    
+    //Imagen para el fondo
+    private Image backgraound_image;
 
     //importacion de tabla 
     public static Data data = new Data();
@@ -35,26 +38,25 @@ public class formularioRequest extends javax.swing.JFrame {
         setbackgraoundPanel("src/Image/formulario.jpg", backImage);
     }
 
-//Devolver la ubicacion del boton
+    //Recibir la ubicacion del boton
     public int setDatoX(int datoX) {
         this.datoX = datoX;
         return datoX;
 
     }
-
     public int setDatoY(int datoY) {
         this.datoY = datoY;
         return datoY;
 
     }
 
-    //Saber de que menu viene
+    //Saber de que parqueo viene
     public String setidPark(String idPark) {
         this.idPark = idPark;
         return idPark;
     }
 
-    //Devolver la ubicacion del boton
+    //Recibir el estado del boton
     public String setStatus(String status) {
         this.status = status;
         return status;
@@ -250,12 +252,20 @@ public class formularioRequest extends javax.swing.JFrame {
         /* Create and display the form */
     }
 
-    //Buscar EMPLEADO y Selector 
+    /**
+     * Esta Funcion busca en la tabla de 
+     * empleados el empleado ingresado como
+     * @param ID y este verifica si esta dentro 
+     * de esta y si lo esta busca si el espacio
+     * elegido ve si el empleado tiene los permisos
+     * adecuados
+     * @return regresa si el empleado es apto para el espacio
+     */ 
     private boolean searchWorker(int ID) {
         for (int i = 0; i < data.arrEmpleado.length; i++) {
-            if (data.arrEmpleado[i] != null && data.arrEmpleado[i].getId() == ID) { // si el empleado seleccionado no es NULL y Es igual ID retorna el empleado seleccionado
+            if (data.arrEmpleado[i] != null && data.arrEmpleado[i].getId() == ID) { //Si el empleado seleccionado no es NULL y Es igual ID retorna el empleado seleccionado
                 if (status == "D") {
-                    boolean tipo = data.arrEmpleado[i].isDirector();
+                    boolean tipo = data.arrEmpleado[i].isDirector(); //Ver si el el empleado es director
                     if (tipo == true) {
                         if (idPark == "S1") {
                             Data.matrizS1[datoX][datoY] = "P";
@@ -272,7 +282,7 @@ public class formularioRequest extends javax.swing.JFrame {
                     }
                     return tipo;
                 } else if (status == "E") {
-                    boolean tipo = data.arrEmpleado[i].isdiscapacitado();
+                    boolean tipo = data.arrEmpleado[i].isdiscapacitado(); //Ver si el el empleado es discapacitado
                     if (tipo == true) {
                         if (idPark == "S1") {
                             Data.matrizS1[datoX][datoY] = "P";
@@ -310,6 +320,8 @@ public class formularioRequest extends javax.swing.JFrame {
         }
         return false;
     }
+    
+    //Metodo para poder fondo en el panel
         public void setbackgraoundPanel(String rutaImage, JPanel panel) {
         panel.setOpaque(false);
         backgraound_image = new ImageIcon(rutaImage).getImage();

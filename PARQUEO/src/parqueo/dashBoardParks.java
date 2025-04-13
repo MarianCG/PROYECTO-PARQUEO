@@ -246,14 +246,16 @@ public class dashBoardParks extends javax.swing.JFrame {
         contentPark.revalidate();
         contentPark.repaint();        // TODO add your handling code here:
     }//GEN-LAST:event_parkBttnS2ActionPerformed
-
+    
+    //Boton para volver a menu
     private void backBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBottonActionPerformed
         // TODO add your handling code here:
         Menu menu = new Menu();
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backBottonActionPerformed
-
+    
+    //Boton para entrar al apartado de modifcar
     private void modifyBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBottonActionPerformed
         // TODO add your handling code here:
         modifyPark modify = new modifyPark();
@@ -263,7 +265,8 @@ public class dashBoardParks extends javax.swing.JFrame {
         modify.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_modifyBottonActionPerformed
-
+   
+    //Boton para entrar al apartado de historial
     private void historialBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialBottonActionPerformed
         Historial.showHistorial();
     }//GEN-LAST:event_historialBottonActionPerformed
@@ -303,6 +306,8 @@ public class dashBoardParks extends javax.swing.JFrame {
          });
 
     }
+    
+    //Metodo para colocar una imagen de fondo
         public void setbackgraoundPanel(String rutaImage, JPanel panel) {
         panel.setOpaque(false);
         backgraound_image = new ImageIcon(rutaImage).getImage();

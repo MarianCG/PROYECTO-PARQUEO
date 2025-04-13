@@ -38,7 +38,7 @@ public class ParkS1 extends javax.swing.JPanel {
     private int columS1 = 4; // 4 columnas
     JButton[][] parkS1;
 
-//Cambiar por enum
+
     //Metodo para cerrar
     private void cerrarVentana() {
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
@@ -51,9 +51,11 @@ public class ParkS1 extends javax.swing.JPanel {
     //Parqueo S1 5x4
     public void setMatrizS1() {
         parkS1 = new JButton[rowS1][columS1];
+        //Posicion inicial del primer boton
         int positionX = 30;
         int positionY = 30;
 
+       //creacion de botones por coordenadas
         for (int i = 0; i < rowS1; i++) {
             for (int j = 0; j < columS1; j++) {
                 parkS1[i][j] = new JButton();
@@ -75,7 +77,7 @@ public class ParkS1 extends javax.swing.JPanel {
         valueBottons(rowS1, columS1, Data.matrizS1); // Llamar sin parámetros
     }
 
-    //Clase de accion de boton 
+    //Declarar la accion de los botones
     private class ButtonController implements ActionListener {
 
         @Override
@@ -175,7 +177,7 @@ public class ParkS1 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    //Colocar Backgraound
+    //Colocar fondo en el panel
     public void setbackgraoundPanel(String rutaImage, JPanel panel) {
         panel.setOpaque(false);
         backgraound_image = new ImageIcon(rutaImage).getImage();

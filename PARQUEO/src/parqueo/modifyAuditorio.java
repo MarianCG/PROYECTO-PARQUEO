@@ -69,7 +69,7 @@ public class modifyAuditorio extends javax.swing.JPanel {
         panelMenu.setMinimumSize(new java.awt.Dimension(800, 500));
 
         principal.setBackground(new java.awt.Color(255, 255, 255));
-        principal.setFont(new java.awt.Font("InaiMathi", 0, 32)); // NOI18N
+        principal.setFont(new java.awt.Font("InaiMathi", 0, 24)); // NOI18N
         principal.setForeground(new java.awt.Color(255, 255, 255));
         principal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         principal.setText("*******");

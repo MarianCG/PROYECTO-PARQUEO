@@ -52,9 +52,11 @@ public class ParkS3 extends javax.swing.JPanel {
     //Parqueo S1 5x4
     public void setMatrizS3() {
         parkS3 = new JButton[rowS3][columS3];
+        //Posicion inicial del primer boton
         int positionX = 30;
         int positionY = 30;
-
+        
+       //creacion de botones por coordenadas
         for (int i = 0; i < rowS3; i++) {
             for (int j = 0; j < columS3; j++) {
                 parkS3[i][j] = new JButton();
@@ -76,7 +78,7 @@ public class ParkS3 extends javax.swing.JPanel {
         valueBottons(rowS3, columS3, Data.matrizS3); // Llamar sin parámetros
     }
 
-    //Clase de accion de boton 
+//Declarar la accion de los botones
     private class ButtonController implements ActionListener {
 
         @Override
@@ -177,7 +179,7 @@ public class ParkS3 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    //Colocar Backgraound
+    //Colocar fondo en el panel
     public void setbackgraoundPanel(String rutaImage, JPanel panel) {
         panel.setOpaque(false);
         backgraound_image = new ImageIcon(rutaImage).getImage();

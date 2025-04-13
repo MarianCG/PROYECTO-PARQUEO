@@ -212,7 +212,9 @@ public class Auditorio extends javax.swing.JPanel {
         panel.repaint();
     }
 
-    //Escribir el titulo dependiendo del INPUT
+    /**
+     * Escribe el titulo dependiendo del INPUT (hourRoom)
+     */
     public void rewritterLabels() {
         int spaceCount = 0;
         principal.setText("Espacios disponibles para el auditorio a las " + hourRoom + " :");

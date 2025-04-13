@@ -14,7 +14,6 @@ public class Historial {
 
     //Variables de Historiales
     private static String[][] historialReservas = new String[20][4];
-
     private static String auditorioHistoryAM[][] = new String[50][3];
     private static String auditorioHistoryPM[][] = new String[50][3];
 
@@ -55,6 +54,11 @@ public class Historial {
         }
     }
 
+    /**
+     * Este metodo es para eliminar la reserva
+     *
+     * @param parkPosition llegue a indicar
+     */
     public static void deleteHistoialPark(String parkPosition) {
         for (int i = 0; i < historialReservas.length; i++) {
             if (parkPosition.equals(historialReservas[i][3])) {
@@ -63,24 +67,13 @@ public class Historial {
                 historialReservas[i][2] = null;
                 historialReservas[i][3] = null;
                 JOptionPane.showMessageDialog(null, "Reserva " + (i + 1) + " eliminada");
-            }
-            else JOptionPane.showMessageDialog(null, "No hay ninguna reserva en esa posicion");
-        }
-
-    }
-
-    public static String[][] getHistorial() {
-        return historialReservas;
-    }
-
-    public static int getCantidadReservas() {
-        int spaceCount = 0;
-        for (int i = 0; i < historialReservas.length; i++) {
-            if (historialReservas[i][0] == null) {
-                spaceCount += 1;
+                break;
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay ninguna reserva en esa posicion");
+                break;
             }
         }
-        return spaceCount;
+
     }
 
     /**
@@ -131,11 +124,11 @@ public class Historial {
         JOptionPane.showMessageDialog(null, "Reserva " + i + " eliminada");
     }
 
-    public static String[][] getHistorialAudiAM() {
-        return auditorioHistoryAM;
-    }
-
-    //Regresa cuantos espacio vacios hay en el arreglo
+    /**
+     * Cuenta la cantidad de espacios en null
+     *
+     * @return la cantidad de espacio vacio en el arreglo
+     */
     public static int getCantidadReservasAudiAM() {
         int spaceCount = 0;
         for (int i = 0; i < auditorioHistoryAM.length; i++) {
@@ -192,10 +185,6 @@ public class Historial {
         auditorioHistoryPM[i - 1][1] = null;
         auditorioHistoryPM[i - 1][2] = null;
         JOptionPane.showMessageDialog(null, "Reserva " + i + " eliminada");
-    }
-
-    public static String[][] getHistorialAudiPM() {
-        return auditorioHistoryPM;
     }
 
     //Regresa cuantos espacio vacios hay en el arreglo
