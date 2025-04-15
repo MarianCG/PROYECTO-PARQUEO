@@ -32,8 +32,8 @@ public class SRMain extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         Borde2 = new javax.swing.JPanel();
-        Logo2 = new javax.swing.JTextField();
         searchbar = new javax.swing.JTextField();
+        Volver = new javax.swing.JButton();
         SeleecionarSR = new javax.swing.JTextField();
         Salasddmenu = new javax.swing.JComboBox<>();
         SeleccionarEmp = new javax.swing.JTextField();
@@ -44,6 +44,7 @@ public class SRMain extends javax.swing.JFrame {
         HoraFintxt = new javax.swing.JTextField();
         HoraInicio = new javax.swing.JTextField();
         HoraFin = new javax.swing.JTextField();
+        Logo2 = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -53,17 +54,6 @@ public class SRMain extends javax.swing.JFrame {
 
         Borde2.setBackground(new java.awt.Color(0, 102, 153));
 
-        Logo2.setBackground(new java.awt.Color(0, 102, 153));
-        Logo2.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
-        Logo2.setText("I N T E L ");
-        Logo2.setBorder(null);
-        Logo2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        Logo2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Logo2ActionPerformed(evt);
-            }
-        });
-
         searchbar.setForeground(new java.awt.Color(204, 204, 204));
         searchbar.setText("Buscar");
         searchbar.addActionListener(new java.awt.event.ActionListener() {
@@ -72,25 +62,35 @@ public class SRMain extends javax.swing.JFrame {
             }
         });
 
+        Volver.setBackground(new java.awt.Color(0, 102, 153));
+        Volver.setFont(new java.awt.Font("Century Gothic", 3, 12)); // NOI18N
+        Volver.setText("Volver");
+        Volver.setBorder(null);
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Borde2Layout = new javax.swing.GroupLayout(Borde2);
         Borde2.setLayout(Borde2Layout);
         Borde2Layout.setHorizontalGroup(
             Borde2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Borde2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(Logo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(Volver)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(23, 23, 23))
         );
         Borde2Layout.setVerticalGroup(
             Borde2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Borde2Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+            .addGroup(Borde2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addGroup(Borde2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Logo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(searchbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Volver))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         SeleecionarSR.setText("Seleccione la Sala de Reuniones:");
@@ -168,6 +168,18 @@ public class SRMain extends javax.swing.JFrame {
             }
         });
 
+        Logo2.setEditable(false);
+        Logo2.setBackground(new java.awt.Color(255, 255, 255));
+        Logo2.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
+        Logo2.setText("I N T E L ");
+        Logo2.setBorder(null);
+        Logo2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Logo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Logo2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -177,7 +189,7 @@ public class SRMain extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(SeleecionarSR, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,18 +202,22 @@ public class SRMain extends javax.swing.JFrame {
                                     .addComponent(HoraFintxt, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Empleadoddmenu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(HoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(HoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE))
+                                    .addComponent(Empleadoddmenu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(CancelarBTT, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                        .addComponent(CancelarBTT, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(ReservarBTT, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Logo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +225,9 @@ public class SRMain extends javax.swing.JFrame {
                 .addComponent(Borde2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGap(12, 12, 12)
+                        .addComponent(Logo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(SeleecionarSR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Salasddmenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,7 +243,7 @@ public class SRMain extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(HoraFintxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(HoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(77, Short.MAX_VALUE))
+                        .addContainerGap(71, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -249,7 +267,8 @@ public class SRMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Logo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Logo2ActionPerformed
-        // TODO add your handling code here:
+      Logo2.setEditable(false);
+      Logo2.setCaretColor(new java.awt.Color(0, 0, 0, 0));
     }//GEN-LAST:event_Logo2ActionPerformed
 
     private void SalasddmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalasddmenuActionPerformed
@@ -325,6 +344,16 @@ if (opcion == JOptionPane.YES_OPTION) {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchbarActionPerformed
 
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+      
+     
+        
+        
+        Inicio anterior = new Inicio();
+        anterior.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_VolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +402,7 @@ if (opcion == JOptionPane.YES_OPTION) {
     private javax.swing.JComboBox<String> Salasddmenu;
     private javax.swing.JTextField SeleccionarEmp;
     private javax.swing.JTextField SeleecionarSR;
+    private javax.swing.JButton Volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField searchbar;

@@ -21,8 +21,12 @@ public class SalasdeReuniones {
      */
     public static void main(String[] args) {
         
+         java.awt.EventQueue.invokeLater(() -> {
+       
        Inicio Inicio1 = new Inicio();
        Inicio1.setVisible(true);
+         });
+    
         
     }
     
