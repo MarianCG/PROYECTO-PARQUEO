@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package proyectospaceadmin;
+package parqueo;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -11,6 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -21,11 +25,12 @@ public class ParkS3 extends javax.swing.JPanel {
     /**
      * Creates new form ParkS1temp
      */
-
+    private Image backgraound_image;
 
     public ParkS3() {
         initComponents();
         setMatrizS3();
+        setbackgraoundPanel("src/Image/parqueoS3.jpg", panelS3);
     }
 
 // Matriz de Botones
@@ -45,9 +50,11 @@ public class ParkS3 extends javax.swing.JPanel {
     //Parqueo S1 5x4
     public void setMatrizS3() {
         parkS3 = new JButton[rowS3][columS3];
+        //Posicion inicial del primer boton
         int positionX = 30;
         int positionY = 30;
 
+        //creacion de botones por coordenadas
         for (int i = 0; i < rowS3; i++) {
             for (int j = 0; j < columS3; j++) {
                 parkS3[i][j] = new JButton();
@@ -69,7 +76,7 @@ public class ParkS3 extends javax.swing.JPanel {
         valueBottons(rowS3, columS3, Data.matrizS3); // Llamar sin parámetros
     }
 
-    //Clase de accion de boton 
+//Declarar la accion de los botones
     private class ButtonController implements ActionListener {
 
         @Override
@@ -127,7 +134,21 @@ public class ParkS3 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelS3 = new javax.swing.JPanel();
+        panelS3 = new javax.swing.JPanel(){
+
+            @Override
+            public void paintComponent(Graphics g) {
+                //Obtener dimensiones
+                int width = this.getSize().width;
+                int height = this.getSize().height;
+
+                if (backgraound_image != null){
+                    g.drawImage(backgraound_image, 0, 0, width, height, null);
+                }
+                super.paintComponent(g);
+            }
+
+        };
 
         setPreferredSize(new java.awt.Dimension(500, 300));
 
@@ -156,6 +177,12 @@ public class ParkS3 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    //Colocar fondo en el panel
+    public void setbackgraoundPanel(String rutaImage, JPanel panel) {
+        panel.setOpaque(false);
+        backgraound_image = new ImageIcon(rutaImage).getImage();
+        panel.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel panelS3;

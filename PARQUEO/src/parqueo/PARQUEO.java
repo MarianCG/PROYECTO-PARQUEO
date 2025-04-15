@@ -4,15 +4,10 @@
  */
 package parqueo;
 
-
-import proyectospaceadmin.dashBoardParks;
-
-
 public class PARQUEO {
 
     public static void main(String[] args) {
-        dashBoardParks dashBoardMenu = new dashBoardParks();
+        Menu dashBoardMenu = new Menu();
         dashBoardMenu.setVisible(true);
-
     }
 }

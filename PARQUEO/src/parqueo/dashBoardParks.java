@@ -2,10 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package proyectospaceadmin;
+package parqueo;
+
 
 import java.awt.BorderLayout;
-
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,9 +21,12 @@ public class dashBoardParks extends javax.swing.JFrame {
      * Este JFrame es para poder reservar los espacios del parqueo y ver que
      * tipo de parqueo
      */
+    private Image backgraound_image;
 
     public dashBoardParks() {
         initComponents();
+        setbackgraoundPanel("src/Image/parqueoDash.jpg", jPanel1);
+        setbackgraoundPanel("src/Image/parqueoDash.jpg", contentPark);
     }
 //
 //    public static boolean idVerificator(int id) {
@@ -41,18 +48,52 @@ public class dashBoardParks extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel(){
+
+            @Override
+            public void paintComponent(Graphics g) {
+                //Obtener dimensiones
+                int width = this.getSize().width;
+                int height = this.getSize().height;
+
+                if (backgraound_image != null){
+                    g.drawImage(backgraound_image, 0, 0, width, height, null);
+                }
+                super.paintComponent(g);
+            }
+
+        };
         parkBttnS1 = new javax.swing.JButton();
         parkBttnS2 = new javax.swing.JButton();
         parkBttnS3 = new javax.swing.JButton();
-        contentPark = new javax.swing.JPanel();
+        contentPark = new javax.swing.JPanel(){
+
+            @Override
+            public void paintComponent(Graphics g) {
+                //Obtener dimensiones
+                int width = this.getSize().width;
+                int height = this.getSize().height;
+
+                if (backgraound_image != null){
+                    g.drawImage(backgraound_image, 0, 0, width, height, null);
+                }
+                super.paintComponent(g);
+            }
+
+        };
         historialBotton = new javax.swing.JButton();
         modifyBotton = new javax.swing.JButton();
+        backBotton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
+        setMaximumSize(new java.awt.Dimension(900, 800));
+        setMinimumSize(new java.awt.Dimension(900, 800));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setMaximumSize(new java.awt.Dimension(900, 820));
+        jPanel1.setMinimumSize(new java.awt.Dimension(900, 820));
+        jPanel1.setPreferredSize(new java.awt.Dimension(900, 820));
 
         parkBttnS1.setBackground(new java.awt.Color(51, 51, 51));
         parkBttnS1.setText("Parqueo S1");
@@ -79,6 +120,7 @@ public class dashBoardParks extends javax.swing.JFrame {
         });
 
         contentPark.setBackground(new java.awt.Color(102, 102, 102));
+        contentPark.setPreferredSize(new java.awt.Dimension(860, 658));
 
         historialBotton.setBackground(new java.awt.Color(255, 255, 0));
         historialBotton.setForeground(new java.awt.Color(0, 0, 0));
@@ -98,16 +140,26 @@ public class dashBoardParks extends javax.swing.JFrame {
             }
         });
 
+        backBotton.setBackground(new java.awt.Color(153, 0, 0));
+        backBotton.setText("Atras");
+        backBotton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBottonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout contentParkLayout = new javax.swing.GroupLayout(contentPark);
         contentPark.setLayout(contentParkLayout);
         contentParkLayout.setHorizontalGroup(
             contentParkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contentParkLayout.createSequentialGroup()
-                .addGap(220, 220, 220)
+                .addGap(165, 165, 165)
                 .addComponent(historialBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122)
+                .addGap(58, 58, 58)
+                .addComponent(backBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(modifyBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(165, 165, 165))
         );
         contentParkLayout.setVerticalGroup(
             contentParkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +167,8 @@ public class dashBoardParks extends javax.swing.JFrame {
                 .addContainerGap(541, Short.MAX_VALUE)
                 .addGroup(contentParkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(historialBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modifyBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(modifyBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54))
         );
 
@@ -126,35 +179,34 @@ public class dashBoardParks extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(parkBttnS1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(parkBttnS2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
                 .addComponent(parkBttnS3, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
-            .addComponent(contentPark, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contentPark, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 901, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(parkBttnS1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(parkBttnS2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(parkBttnS3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentPark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addComponent(contentPark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 901, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -164,7 +216,6 @@ public class dashBoardParks extends javax.swing.JFrame {
         ParkS3 parkS3 = new ParkS3();
         parkS3.setSize(900, 658);
         parkS3.setLocation(0, 0);
-        
 
         contentPark.removeAll();
         contentPark.add(parkS3, BorderLayout.CENTER);
@@ -194,19 +245,29 @@ public class dashBoardParks extends javax.swing.JFrame {
         contentPark.repaint();        // TODO add your handling code here:
     }//GEN-LAST:event_parkBttnS2ActionPerformed
 
-    private void historialBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialBottonActionPerformed
-        HistorialPark.showHistorial();
-    }//GEN-LAST:event_historialBottonActionPerformed
+    //Boton para volver a menu
+    private void backBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBottonActionPerformed
+        // TODO add your handling code here:
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_backBottonActionPerformed
 
+    //Boton para entrar al apartado de modifcar
     private void modifyBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyBottonActionPerformed
         // TODO add your handling code here:
         modifyPark modify = new modifyPark();
         modify.setSize(824, 634);
         modify.setLocation(0, 0);
-        
+
         modify.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_modifyBottonActionPerformed
+
+    //Boton para entrar al apartado de historial
+    private void historialBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialBottonActionPerformed
+        Historial.showHistorial();
+    }//GEN-LAST:event_historialBottonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,17 +295,25 @@ public class dashBoardParks extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(dashBoardParks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
-                /* Create and display the form */
-         java.awt.EventQueue.invokeLater(new Runnable() {
-             public void run() {
-                 new dashBoardParks().setVisible(true);
-             }
-         });
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new dashBoardParks().setVisible(true);
+            }
+        });
 
     }
 
+    //Metodo para colocar una imagen de fondo
+    public void setbackgraoundPanel(String rutaImage, JPanel panel) {
+        panel.setOpaque(false);
+        backgraound_image = new ImageIcon(rutaImage).getImage();
+        panel.repaint();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBotton;
     private javax.swing.JPanel contentPark;
     private javax.swing.JButton historialBotton;
     private javax.swing.JPanel jPanel1;

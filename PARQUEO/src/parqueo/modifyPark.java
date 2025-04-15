@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package proyectospaceadmin;
+package parqueo;
 
 import java.awt.BorderLayout;
 
@@ -10,11 +10,17 @@ import java.awt.BorderLayout;
  *
  * @author porto
  */
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
 public class modifyPark extends javax.swing.JFrame {
 
     /**
      * Creates new form modifyPark
      */
+    private Image backgraound_image;
     String parkSelect = "";
 
     public modifyPark() {
@@ -23,6 +29,7 @@ public class modifyPark extends javax.swing.JFrame {
         filaComboBox.setVisible(false);
         columComboBox.setVisible(false);
         fila_columna_text.setVisible(false);
+        setbackgraoundPanel("src/Image/modify.jpg", panel);
     }
 
     /**
@@ -34,7 +41,21 @@ public class modifyPark extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel(){
+
+            @Override
+            public void paintComponent(Graphics g) {
+                //Obtener dimensiones
+                int width = this.getSize().width;
+                int height = this.getSize().height;
+
+                if (backgraound_image != null){
+                    g.drawImage(backgraound_image, 0, 0, width, height, null);
+                }
+                super.paintComponent(g);
+            }
+
+        };
         backBotton1 = new javax.swing.JButton();
         parkSelector = new javax.swing.JComboBox<>();
         selectBotton = new javax.swing.JButton();
@@ -43,13 +64,15 @@ public class modifyPark extends javax.swing.JFrame {
         filaComboBox = new javax.swing.JComboBox<>();
         columComboBox = new javax.swing.JComboBox<>();
         confirmBotton = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(906, 826));
-        setMinimumSize(new java.awt.Dimension(906, 826));
+        setMaximumSize(new java.awt.Dimension(900, 700));
+        setMinimumSize(new java.awt.Dimension(900, 700));
 
         panel.setBackground(new java.awt.Color(102, 102, 102));
+        panel.setMaximumSize(new java.awt.Dimension(900, 700));
+        panel.setMinimumSize(new java.awt.Dimension(900, 700));
+        panel.setPreferredSize(new java.awt.Dimension(900, 700));
 
         backBotton1.setBackground(new java.awt.Color(153, 0, 0));
         backBotton1.setText("Atras");
@@ -106,42 +129,47 @@ public class modifyPark extends javax.swing.JFrame {
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(fila_columna_text, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                            .addGap(190, 190, 190)
-                            .addComponent(filaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(242, 242, 242)
-                            .addComponent(columComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(327, 327, 327)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(confirmBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelLayout.createSequentialGroup()
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(backBotton1))
+                    .addGroup(panelLayout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(parkSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                .addContainerGap(234, Short.MAX_VALUE)
+                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
+                        .addComponent(Parqueo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(395, 395, 395))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fila_columna_text, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(backBotton1))
-                            .addGroup(panelLayout.createSequentialGroup()
-                                .addGap(284, 284, 284)
-                                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(selectBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(confirmBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(panelLayout.createSequentialGroup()
-                            .addGap(239, 239, 239)
-                            .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Parqueo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(parkSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(199, Short.MAX_VALUE))
+                                .addComponent(filaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(230, 230, 230)
+                                .addComponent(columComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(220, 220, 220))))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(backBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGap(59, 59, 59)
                 .addComponent(Parqueo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(parkSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addComponent(fila_columna_text, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGap(26, 26, 26)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(filaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(columComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -149,18 +177,7 @@ public class modifyPark extends javax.swing.JFrame {
                 .addComponent(selectBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(confirmBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(195, 195, 195))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+                .addGap(155, 155, 155))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,39 +185,41 @@ public class modifyPark extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(362, 362, 362)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(361, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(328, 328, 328)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(329, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBotton1ActionPerformed
+    private void confirmBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBottonActionPerformed
         // TODO add your handling code here:
-        dashBoardParks parqueo = new dashBoardParks();
-        parqueo.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_backBotton1ActionPerformed
+        int rowSelector = filaComboBox.getSelectedIndex();
+        int columSelector = columComboBox.getSelectedIndex();
 
-    private void parkSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkSelectorActionPerformed
+        bottonsModify panelsModify = new bottonsModify(rowSelector, columSelector, parkSelect);
+        panelsModify.setSize(823, 757);
+        panelsModify.setLocation(0, 0);
+
+        panel.removeAll();
+        panel.add(panelsModify, BorderLayout.CENTER);
+        panel.revalidate();
+        panel.repaint();
+
+    }//GEN-LAST:event_confirmBottonActionPerformed
+
+    private void filaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filaComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_parkSelectorActionPerformed
+
+    }//GEN-LAST:event_filaComboBoxActionPerformed
 
     private void selectBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectBottonActionPerformed
         // TODO add your handling code here:
+        //Obtiene los datos de que parqueo desea ingresar sea S1,S2,S3
         parkSelect = parkSelector.getSelectedItem().toString();
+        //Oculta botones, ComboBox e invoca nuevos
         Parqueo.setVisible(false);
         parkSelector.setVisible(false);
         fila_columna_text.setVisible(true);
@@ -211,27 +230,16 @@ public class modifyPark extends javax.swing.JFrame {
         selectBotton.setVisible(false);
     }//GEN-LAST:event_selectBottonActionPerformed
 
-    private void filaComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filaComboBoxActionPerformed
+    private void parkSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkSelectorActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_parkSelectorActionPerformed
 
-
-    }//GEN-LAST:event_filaComboBoxActionPerformed
-
-    private void confirmBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBottonActionPerformed
+    private void backBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBotton1ActionPerformed
         // TODO add your handling code here:
-        int rowSelector = filaComboBox.getSelectedIndex();
-        int columSelector = columComboBox.getSelectedIndex();
-        
-        bottonsModify panelsModify = new bottonsModify(rowSelector, columSelector, parkSelect);
-        panelsModify.setSize(823,757);
-        panelsModify.setLocation(0, 0);
-        
-        panel.removeAll();
-        panel.add(panelsModify, BorderLayout.CENTER);
-        panel.revalidate();
-        panel.repaint();
-                
-    }//GEN-LAST:event_confirmBottonActionPerformed
+        dashBoardParks parqueo = new dashBoardParks();
+        parqueo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_backBotton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,14 +283,15 @@ public class modifyPark extends javax.swing.JFrame {
     private javax.swing.JButton confirmBotton;
     private javax.swing.JComboBox<String> filaComboBox;
     private javax.swing.JLabel fila_columna_text;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panel;
     private javax.swing.JComboBox<String> parkSelector;
     private javax.swing.JButton selectBotton;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Este metodo es para agregar los espacios de cada parqueo correspondiente
+     */
     private void addItemstoBox() {
-
         if (parkSelect == "S1") {
             for (int i = 0; i < 5; i++) {
                 filaComboBox.addItem(String.valueOf(i + 1));
@@ -305,5 +314,11 @@ public class modifyPark extends javax.swing.JFrame {
                 columComboBox.addItem(String.valueOf(i + 1));
             }
         }
+    }
+
+    public void setbackgraoundPanel(String rutaImage, JPanel panel) {
+        panel.setOpaque(false);
+        backgraound_image = new ImageIcon(rutaImage).getImage();
+        panel.repaint();
     }
 }
