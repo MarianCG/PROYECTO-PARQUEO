@@ -84,8 +84,10 @@ public class EspaciosRecreativos extends JFrame {
         });
 
         cancelar.addActionListener(e -> {
-            new Menu();
-            dispose();
+            Menu menu = new Menu();
+            menu.setVisible(true);
+            this.setVisible(false);
+            
         });
 
         add(lblMensaje);

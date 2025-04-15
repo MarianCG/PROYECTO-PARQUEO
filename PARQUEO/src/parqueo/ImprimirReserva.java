@@ -56,8 +56,16 @@ public class ImprimirReserva extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 guardarReservaEnArchivo(reservaTextArea.getText());
+                cerrar();
+
             }
         });
+    }
+
+    private void cerrar() {
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        this.setVisible(false);
     }
 
     private void guardarReservaEnArchivo(String texto) {
