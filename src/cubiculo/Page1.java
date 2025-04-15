@@ -2,9 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package cubiculo;
+package parqueo;
 
 import javax.swing.JOptionPane;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.IOException;
 
 /**
  *
@@ -15,6 +19,7 @@ public class Page1 extends javax.swing.JPanel {
     private Empleado[] arrempleado;
 
     private cubiculo_reserva sistemaCubiculos;
+    private BufferedImage imagenFondo;
 
     public Page1(Empleado[] arrempleado, cubiculo_reserva sistemaCubiculos) {
         initComponents();
@@ -29,7 +34,19 @@ public class Page1 extends javax.swing.JPanel {
         ComboxHora.setModel(new javax.swing.DefaultComboBoxModel<>(opcionesHoras));
 
         nCubiculo.setEditable(true);
-
+        
+        try {
+            imagenFondo = ImageIO.read(getClass().getResource("scr/parqueo/Img.fondo.jpg"));
+        } catch (IOException | IllegalArgumentException e) {
+            imagenFondo = null; // Si falla, simplemente no se dibuja fondo
+        }
+    }
+    
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (imagenFondo != null) {
+            g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+        }
     }
 
     private static boolean searchWorker(int ID, Empleado[] arrempleado) {
@@ -41,9 +58,10 @@ public class Page1 extends javax.swing.JPanel {
         return false;
 
     }
-
-
     
+    
+    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

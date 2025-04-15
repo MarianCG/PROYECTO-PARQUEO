@@ -2,13 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package cubiculo;
+package parqueo;
 
 
 
-import cubiculo.cubiculo_reserva;
-import cubiculo.cubiculo_reserva;
-import cubiculo.cubiculo_reserva;
+
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 
@@ -44,7 +42,7 @@ public class Form extends javax.swing.JFrame {
         cargarPagina(p2, "Modificar");
 
         panelContenido.setLayout(new BorderLayout());
-
+        
     }
     
     public static String getEmpleadoNombre(int id){

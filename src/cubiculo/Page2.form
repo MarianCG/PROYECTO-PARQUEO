@@ -70,7 +70,7 @@
                   <Component id="NMCubiculo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="nmCubiculo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="IDModificar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="idModificar" min="-2" max="-2" attributes="0"/>
@@ -78,7 +78,7 @@
                   <Component id="Horam" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="HoraM" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="Modificar" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
               </Group>
