@@ -5,20 +5,18 @@
 package cubiculo;
 
 import javax.swing.JOptionPane;
-import javax.swing.JOptionPane;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author genni
  */
 public class Empleado {
+
     private String name;
     private String lastname;
     private int id;
     private boolean director;
-    private boolean discapacitado; 
+    private boolean discapacitado;
 
     public Empleado(String nombre, String apellido, int id, boolean director, boolean discapacitado) {
         this.name = nombre;
@@ -67,21 +65,22 @@ public class Empleado {
     public void setdiscapacitado(boolean Discapacitado) {
         this.discapacitado = Discapacitado;
     }
-   
+
     public String getnombrecompleto() {
-        return name + " " + lastname;   }
-    
+        return name + " " + lastname;
+    }
+
     public void informacionempleado() {
         String info = "Informacion del empleado:\n"
                 + "Nombre: " + getnombrecompleto() + "\n"
-                + "ID: " + id +"\n"
-                +"Director:" + (director ? "Si" : "No") + "\n"
+                + "ID: " + id + "\n"
+                + "Director:" + (director ? "Si" : "No") + "\n"
                 + "Discapacitado:" + (discapacitado ? "Si" : "No");
-        
+
         JOptionPane.showMessageDialog(null, "Datos del empleado: " + info);
     }
-    
-      private static boolean searchWorker(int ID, Empleado[] arrempleado) {
+
+    private static boolean searchWorker(int ID, Empleado[] arrempleado) {
         for (int i = 0; i < arrempleado.length; i++) {
             if (arrempleado[i] != null && arrempleado[i].getId() == ID) {
                 return true;
@@ -92,9 +91,6 @@ public class Empleado {
     }
 
 }
-   
-    
-
     
     
 

@@ -3,29 +3,40 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package cubiculo;
-import java.util.Date;
 
 /**
  *
  * @author genni
  */
 public class habitacion {
+
     private int codigo;
     private String nombre;
     private boolean esta_ocupada;
     private String horaReservaStr;
     private reservas reserva;
-    
+    private int idEmpleado;
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setId(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
     public habitacion(int codigo, String nombre, boolean esta_ocupada, String horaReserva, reservas reserva) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.esta_ocupada= esta_ocupada;
-        this.horaReservaStr = horaReservaStr;
+        this.esta_ocupada = esta_ocupada;
+        this.horaReservaStr = horaReserva;
         this.reserva = reserva;
-        
-        
-    
-    }     
+
+    }
 
     public int getCodigo() {
         return codigo;
@@ -51,8 +62,6 @@ public class habitacion {
         this.esta_ocupada = esta_ocupada;
     }
 
-    
-
     public reservas getReserva() {
         return reserva;
     }
@@ -69,9 +78,5 @@ public class habitacion {
         this.horaReservaStr = horaReservaStr;
     }
 
-    
-        
-    
-    
-    
+
 }
