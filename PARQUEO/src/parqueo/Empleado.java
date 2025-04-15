@@ -12,34 +12,34 @@ import javax.swing.JOptionPane;
  */
 public class Empleado {
     
-    private String name;
-    private String lastname;
+    private String nombre;
+    private String apellido;
     private int id;
     private boolean director;
     private boolean discapacitado; 
 
     public Empleado(String nombre, String apellido, int id, boolean director, boolean discapacitado) {
-        this.name = nombre;
-        this.lastname = apellido;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.id = id;
         this.director = director;
         this.discapacitado = discapacitado;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setApellido(String lastname) {
+        this.apellido = apellido;
     }
 
     public int getId() {
@@ -67,7 +67,7 @@ public class Empleado {
     }
    
     public String getnombrecompleto() {
-        return name + " " + lastname;   }
+        return nombre + " " + apellido;   }
     
     public void informacionempleado() {
         String info = "Informacion del empleado:\n"

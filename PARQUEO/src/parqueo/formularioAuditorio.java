@@ -185,13 +185,13 @@ public class formularioAuditorio extends javax.swing.JPanel {
         for (int i = 0; i < data.arrEmpleado.length; i++) {
             if (data.arrEmpleado[i] != null && data.arrEmpleado[i].getId() == ID) {
                 if (hourRoom.equals("10 AM")) {
-                    Historial.addReserveAudiAM(data.arrEmpleado[i].getName(), data.arrEmpleado[i].getId(), fecha);
+                    Historial.addReserveAudiAM(data.arrEmpleado[i].getNombre(), data.arrEmpleado[i].getId(), fecha);
                     JOptionPane.showMessageDialog(null, "Reserva exitosa");
                     DashAuditorios dash = new DashAuditorios();
                     dash.setVisible(true);
                     this.setVisible(false);
                 } else if (hourRoom.equals("3 PM")) {
-                    Historial.addReserveAudiPM(data.arrEmpleado[i].getName(), data.arrEmpleado[i].getId(), fecha);
+                    Historial.addReserveAudiPM(data.arrEmpleado[i].getNombre(), data.arrEmpleado[i].getId(), fecha);
                     JOptionPane.showMessageDialog(null, "Reserva exitosa");
                     DashAuditorios dash = new DashAuditorios();
                     dash.setVisible(true);

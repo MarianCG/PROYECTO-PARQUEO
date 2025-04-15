@@ -274,7 +274,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             Data.matrizS3[datoX][datoY] = "P";
                         }
-                        Historial.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1));
+                        Historial.addReserve(data.arrEmpleado[i].getNombre(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1));
                         JOptionPane.showMessageDialog(null, "Reserva exitosa");
                         dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
@@ -291,7 +291,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             Data.matrizS3[datoX][datoY] = "P";
                         }
-                        Historial.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1) );
+                        Historial.addReserve(data.arrEmpleado[i].getNombre(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1) );
                         JOptionPane.showMessageDialog(null, "Reserva exitosa");
                         dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
@@ -308,7 +308,7 @@ public class formularioRequest extends javax.swing.JFrame {
                         } else if (idPark == "S3") {
                             Data.matrizS3[datoX][datoY] = "P";
                         }
-                        Historial.addReserve(data.arrEmpleado[i].getName(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1) );
+                        Historial.addReserve(data.arrEmpleado[i].getNombre(),data.arrEmpleado[i].getId(),fecha,idPark+" "+(datoX+1 )+" "+(datoY+1) );
                         JOptionPane.showMessageDialog(null, "Reserva exitosa");
                         dashBoardParks parqueo = new dashBoardParks();
                         parqueo.setVisible(true);
