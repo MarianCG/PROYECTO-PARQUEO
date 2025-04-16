@@ -4,7 +4,7 @@
  */
 package parqueo;
 
-import parqueo.Form;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -13,17 +13,21 @@ import javax.swing.JOptionPane;
  */
 public class Historial {
 
+    
+    //Variables de Historiales
+    private static String[][] historialReservas = new String[20][4];
+    private static String auditorioHistoryAM[][] = new String[50][3];
+    private static String auditorioHistoryPM[][] = new String[50][3];
+    
+    //Getter y Stter para el historial
     public static String[][] getHistorialReservas() {
         return historialReservas;
     }
 
-    //Variables de Historiales
+    
     public static void setHistorialReservas(String[][] historialReservas) {
         Historial.historialReservas = historialReservas;
     }
-    private static String[][] historialReservas = new String[20][4];
-    private static String auditorioHistoryAM[][] = new String[50][3];
-    private static String auditorioHistoryPM[][] = new String[50][3];
 
     /**
      * Esta metodo agrega al arreglo la reserva de los parqueos S1,S2,S3
@@ -62,7 +66,7 @@ public class Historial {
         }
     }
 
-    //Todo es igual menos este método que es para filtrar las reservas de los cubículos
+    //Muestra solamente la reseva de los cubículos
     public static void showHistorialCubiculos() {
         boolean hayReservas = false;
 

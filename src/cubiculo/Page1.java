@@ -5,10 +5,10 @@
 package parqueo;
 
 import javax.swing.JOptionPane;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.IOException;
+
+
+
+
 
 /**
  *
@@ -16,37 +16,26 @@ import java.io.IOException;
  */
 public class Page1 extends javax.swing.JPanel {
 
-    private Empleado[] arrempleado;
+    private Empleado[] arrempleado; //Arreglo estatico de los 5 empleados
 
-    private cubiculo_reserva sistemaCubiculos;
-    private BufferedImage imagenFondo;
+    private cubiculo_reserva sistemaCubiculos; //La clase que maneja las reservas 
+    
 
-    public Page1(Empleado[] arrempleado, cubiculo_reserva sistemaCubiculos) {
+    public Page1(Empleado[] arrempleado, cubiculo_reserva sistemaCubiculos) { //Constructor con los parámetros
         initComponents();
         this.arrempleado = arrempleado;
         this.sistemaCubiculos = sistemaCubiculos;
 
-        String[] opcionesHoras = {
+        String[] opcionesHoras = { //Un arreglo de horas oara mostrar en una lista
             "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
             "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"
         };
 
-        ComboxHora.setModel(new javax.swing.DefaultComboBoxModel<>(opcionesHoras));
+        ComboxHora.setModel(new javax.swing.DefaultComboBoxModel<>(opcionesHoras)); //Se le notifica al Combo Box que use esas opciones
 
         nCubiculo.setEditable(true);
         
-        try {
-            imagenFondo = ImageIO.read(getClass().getResource("scr/parqueo/Img.fondo.jpg"));
-        } catch (IOException | IllegalArgumentException e) {
-            imagenFondo = null; // Si falla, simplemente no se dibuja fondo
-        }
-    }
     
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if (imagenFondo != null) {
-            g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
-        }
     }
 
     private static boolean searchWorker(int ID, Empleado[] arrempleado) {
@@ -193,40 +182,44 @@ public class Page1 extends javax.swing.JPanel {
     }//GEN-LAST:event_ComboxHoraActionPerformed
 
     private void ReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservarActionPerformed
-        try {
+        try { // Maneja los errores, ejecutando el código si todo sale bien 
+            
+            //Obtener datos desde la interfaz
             int codigoCubiculo = Integer.parseInt(nCubiculo.getText().trim()) - 1;
             int idEmpleado = Integer.parseInt(id.getText().trim());
             String horaSeleccionada = ComboxHora.getSelectedItem().toString();
 
-            if (!searchWorker(idEmpleado, arrempleado)) {
+            if (!searchWorker(idEmpleado, arrempleado)) { //Valida si el empleado existe
                 JOptionPane.showMessageDialog(this, "El ID no corresponde a un empleado registrado.");
                 return;
             }
 
-            if (codigoCubiculo < 0 || codigoCubiculo >= sistemaCubiculos.getCantidad_cubiculos()) {
+            if (codigoCubiculo < 0 || codigoCubiculo >= sistemaCubiculos.getCantidad_cubiculos()) { //Valida si el número de cubículo es correcto
                 JOptionPane.showMessageDialog(this, "Numero fuera de rango");
                 return;
             }
-            habitacion cubiculo = sistemaCubiculos.getVector_cubiculos(codigoCubiculo);
+            habitacion cubiculo = sistemaCubiculos.getVector_cubiculos(codigoCubiculo); //Accede al cubículo seleccionado dentro del arreglo
 
             if (cubiculo.getEsta_ocupada()) {
                 JOptionPane.showMessageDialog(null, "El cubiculo ya esta ocupado");
-                return;
+                return; //Si ya esta ocupado entonces no se podra hacer la reserva 
 
             }
-            cubiculo.setEsta_ocupada(true);
-            cubiculo.setHoraReservaStr(horaSeleccionada);
-            cubiculo.setIdEmpleado(idEmpleado);
+            //Actualiza el estado del cubículo
+            cubiculo.setEsta_ocupada(true); //Si esta ocupado
+            cubiculo.setHoraReservaStr(horaSeleccionada); //La hora de la reserva
+            cubiculo.setIdEmpleado(idEmpleado); //El ID asignado
 
-            String nombreEmpleado = Form.getEmpleadoNombre(idEmpleado);
+            String nombreEmpleado = Form.getEmpleadoNombre(idEmpleado); //Se busca el nombre del empleado base a su ID, usando la clase Form
             if (nombreEmpleado == null) {
                 nombreEmpleado = "No se encontro el empleado";
             }
 
-            String[] opcionesHoras = {
+            String[] opcionesHoras = { 
                 "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
                 "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"
             };
+            //Busc la posición de la hora que fue seleccionada en el arreglo
             int pos = -1;
             for (int i = 0; i < opcionesHoras.length; i++) {
                 if (opcionesHoras[i].equals(horaSeleccionada)) {
@@ -236,11 +229,12 @@ public class Page1 extends javax.swing.JPanel {
             }
             String horaFin;
             if (pos != -1 && pos + 1 < opcionesHoras.length) {
-                horaFin = opcionesHoras[pos + 1];
+                horaFin = opcionesHoras[pos + 1]; //Se calcula la hora final sumandole 1
 
                 JOptionPane.showMessageDialog(null, "Reserva realizada de\n " + horaSeleccionada + " a " + horaFin);
+                
                 String[][] historialReservas = Historial.getHistorialReservas();
-
+                //Se busca la primera fila vacía y ahi se guarda la nueva reserva
                 for (int i = 0; i < historialReservas.length; i++) {
                     if (historialReservas[i][0] == null) {
                         historialReservas[i][0] = nombreEmpleado;
@@ -254,12 +248,14 @@ public class Page1 extends javax.swing.JPanel {
                 }
                 JOptionPane.showMessageDialog(null, "Reserva lista para: " + nombreEmpleado);
 
+               //Se limpia el formulario
                 nCubiculo.setText("");
                 id.setText("");
                 ComboxHora.setSelectedIndex(0);
 
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) { //Para mostrar el error( ejem: si el usuario escribe un texto en vez de un numero, ya que el Integer
+            //esta convirtiendo un texto a número
             JOptionPane.showMessageDialog(this, "Ingrese numero válidos");
         }
     }//GEN-LAST:event_ReservarActionPerformed

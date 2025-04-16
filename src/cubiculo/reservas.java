@@ -8,21 +8,21 @@ package parqueo;
  *
  * @author genni
  */
-public class reservas {    
-    private String horaInicio;
-    private String horaFin;
-    private int idEmpleado;
-    
-    
+public class reservas {
 
-    public reservas(String horaInicio, String horaFin, int idEmpleado) {
+    private String horaInicio; //Hora de inicio de la reserva en formato string
+    private String horaFin; //Hora de finalización de la reserva en formato string
+    private int idEmpleado; //Identifica el empleado que hace la reserva
+
+    public reservas(String horaInicio, String horaFin, int idEmpleado) { //Constructor que permite hacer una Instancia de reserva con la hora de inicio,
+        //la hora que finaliza y el ID del empleado
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.idEmpleado = idEmpleado;
-        
 
     }
-
+    //Métodos Getter y Setter
+    
     public String getHoraInicio() {
         return horaInicio;
     }
@@ -47,9 +47,4 @@ public class reservas {
         this.idEmpleado = idEmpleado;
     }
 
-   
-     
-
-
-    
 }

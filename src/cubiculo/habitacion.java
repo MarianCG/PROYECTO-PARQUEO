@@ -9,26 +9,16 @@ package parqueo;
  * @author genni
  */
 public class habitacion {
+    //Los atributos privados 
+    private int codigo; //El codigo del cubículo
+    private String nombre; //El nombre del cubículo (Ejem: Cubículo1, Cubículo2, Cubículo3 etc.)
+    private boolean esta_ocupada; //El estado en el que se encuentra el cubiculo
+    private String horaReservaStr; //La hora de la reserva en formato String
+    private reservas reserva; //Objeto de tipo reservas
+    private int idEmpleado; //El ID del empleado que reserva 
 
-    private int codigo;
-    private String nombre;
-    private boolean esta_ocupada;
-    private String horaReservaStr;
-    private reservas reserva;
-    private int idEmpleado;
-
-    public int getIdEmpleado() {
-        return idEmpleado;
-    }
-
-    public void setId(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
-    }
-
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
-    }
-
+    
+//Constructor con todos los parámetros 
     public habitacion(int codigo, String nombre, boolean esta_ocupada, String horaReserva, reservas reserva) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -73,10 +63,22 @@ public class habitacion {
     public String getHoraReservaStr() {
         return horaReservaStr;
     }
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setId(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
 
     public void setHoraReservaStr(String horaReservaStr) {
         this.horaReservaStr = horaReservaStr;
     }
+    
 
 
 }

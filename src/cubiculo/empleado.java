@@ -11,21 +11,21 @@ import javax.swing.JOptionPane;
  * @author genni
  */
 public class Empleado {
-
+    //Los atributos privados del empleado
     private String name;
     private String lastname;
     private int id;
     private boolean director;
     private boolean discapacitado;
 
-    public Empleado(String nombre, String apellido, int id, boolean director, boolean discapacitado) {
+    public Empleado(String nombre, String apellido, int id, boolean director, boolean discapacitado) { //Constructor con parámetro
         this.name = nombre;
         this.lastname = apellido;
         this.id = id;
         this.director = director;
         this.discapacitado = discapacitado;
     }
-
+ //Los métodos Getter y Setter
     public String getName() {
         return name;
     }
@@ -66,11 +66,11 @@ public class Empleado {
         this.discapacitado = Discapacitado;
     }
 
-    public String getnombrecompleto() {
+    public String getnombrecompleto() { //Retorna el nombre completo
         return name + " " + lastname;
     }
 
-    public void informacionempleado() {
+    public void informacionempleado() { //Método que muestra toda la informacion
         String info = "Informacion del empleado:\n"
                 + "Nombre: " + getnombrecompleto() + "\n"
                 + "ID: " + id + "\n"
@@ -80,7 +80,7 @@ public class Empleado {
         JOptionPane.showMessageDialog(null, "Datos del empleado: " + info);
     }
 
-    private static boolean searchWorker(int ID, Empleado[] arrempleado) {
+    private static boolean searchWorker(int ID, Empleado[] arrempleado) { // Un método privado para buscar el ID del empleado en el arreglo
         for (int i = 0; i < arrempleado.length; i++) {
             if (arrempleado[i] != null && arrempleado[i].getId() == ID) {
                 return true;

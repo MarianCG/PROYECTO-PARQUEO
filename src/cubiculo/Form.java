@@ -19,17 +19,19 @@ import javax.swing.JPanel;
  */
 public class Form extends javax.swing.JFrame {
 
-    public static Empleado[] arrempleado;
-    private cubiculo_reserva sistemaCubiculos;
+    public static Empleado[] arrempleado; //Arreglo estático que contiene los empleados que se pueden usar
+    private cubiculo_reserva sistemaCubiculos; //Instancia de la clase cubiculo_reserva, verifica toda su lógica
 
     public Form() {
         initComponents();
 
-        arrempleado = new Empleado[5];
+        arrempleado = new Empleado[5]; //Inicia el arreglo con sus espacios establecidos
         
         
-        sistemaCubiculos = new cubiculo_reserva(15);
-        Page1 p1 = new Page1(arrempleado, sistemaCubiculos);
+        sistemaCubiculos = new cubiculo_reserva(15); //Para crear un sistema para la reserva utilizando un array
+        
+        //Paneles para reservar y modificar que reciben el arreglo de empleados  y el sistema de cubículos
+        Page1 p1 = new Page1(arrempleado, sistemaCubiculos); 
         Page2 p2 = new Page2(arrempleado, sistemaCubiculos);
 
         arrempleado[0] = new Empleado("Erick", "Portocarrero", 118180881, true, false);
@@ -38,14 +40,14 @@ public class Form extends javax.swing.JFrame {
         arrempleado[3] = new Empleado("David", "Moreno", 98765432, true, true);
         arrempleado[4] = new Empleado("Jose", "Apestegui", 118180881, false, false);
 
-        cargarPagina(p1, "Reservar");
+        cargarPagina(p1, "Reservar"); //Muestra en pantalla las páginas al inicio
         cargarPagina(p2, "Modificar");
 
-        panelContenido.setLayout(new BorderLayout());
+        panelContenido.setLayout(new BorderLayout()); //Define al PanelContenido un layout tipo BorderLayout, funciona para mostrar solo un panel a la vez en el centro
         
     }
     
-    public static String getEmpleadoNombre(int id){
+    public static String getEmpleadoNombre(int id){ //Este método busca el empleado  por su ID y devuelve el nombre completo 
         for (Empleado empleado : arrempleado) {
             if (empleado != null && empleado.getId() == id) {
                 return empleado.getName() + " " + empleado.getLastname(); //Devuelve el nombre completo
@@ -54,7 +56,8 @@ public class Form extends javax.swing.JFrame {
         return null; //Si no encuentra el empleado, va a retonar null
     }
 
-    private void cargarPagina(JPanel pagina, String titulo) {
+    private void cargarPagina(JPanel pagina, String titulo) { //Agrega una pestaña al jTabbedPane3 con el nombre reserva
+        //Agrega un nuevo panel que recibe como argumento 
         jTabbedPane3.addTab("Reserva", pagina);
 
         panelContenido.removeAll();
@@ -90,7 +93,7 @@ public class Form extends javax.swing.JFrame {
     
         
         
-    
+    //Los métodos  se disparan cuando la administradora haga clic en los botones de la interfaz
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -201,7 +204,8 @@ public class Form extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ReservasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservasButtonActionPerformed
-       Page1 p1 = new Page1(arrempleado, sistemaCubiculos);
+       //Crea un nueva ventana (Page1)
+        Page1 p1 = new Page1(arrempleado, sistemaCubiculos);
         p1.setSize(610, 320);
         p1.setLocation(0, 0);
         
@@ -212,6 +216,7 @@ public class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_ReservasButtonActionPerformed
 
     private void ModificarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarButtonActionPerformed
+        //Crea un nueva ventana (Page2)
         Page2 p2 = new Page2(arrempleado, sistemaCubiculos);
         p2.setSize(610, 320);
         p2.setLocation(0, 0);
@@ -223,21 +228,24 @@ public class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_ModificarButtonActionPerformed
 
     private void DisponibilidadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisponibilidadButtonActionPerformed
+       //LLama a sistemaCubiculos.existenCubiculosDisponibles()
         boolean disponibles = sistemaCubiculos.existenCubiculosDisponibles();
         
         if(disponibles) {
-            JOptionPane.showMessageDialog(this, "Existen cubículos disponibles");
+            JOptionPane.showMessageDialog(this, "Existen cubículos disponibles"); //Si existen, muestra el mensaje
         } else {
-            JOptionPane.showMessageDialog(this, "No hay cubículos disponibles");
+            JOptionPane.showMessageDialog(this, "No hay cubículos disponibles"); //si no, muestrta que no hay disponibilidad 
         }
     }//GEN-LAST:event_DisponibilidadButtonActionPerformed
 
     private void SalirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirButtonActionPerformed
-         this.dispose(); 
+         
+        this.dispose(); //Cierra la ventana
     }//GEN-LAST:event_SalirButtonActionPerformed
 
     private void MostrarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarReservasActionPerformed
-        Historial.showHistorialCubiculos();
+        Historial.showHistorialCubiculos(); //Llama al método Historial.showHistorialCubiculos para mostrar
+        //todas las reservas que hay 
         
     }//GEN-LAST:event_MostrarReservasActionPerformed
 

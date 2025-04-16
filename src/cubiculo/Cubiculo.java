@@ -7,7 +7,7 @@ package parqueo;
 /**
  * 0
  *
- * @author genni
+ * Método principal
  */
 public class Cubiculo {
 
@@ -15,9 +15,10 @@ public class Cubiculo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        cubiculo_reserva sistemaCubiculos = new cubiculo_reserva(15);
+        //Hace visible el JFrame
+        cubiculo_reserva sistemaCubiculos = new cubiculo_reserva(15); //Crea una instancia de cubiculo_reserva para inicializar los 15 cubiculos
         java.awt.EventQueue.invokeLater(() -> {
-            new Form().setVisible(true);
+            new Form().setVisible(true); //Crea y tambien incializa el formulario
 
         });
     }

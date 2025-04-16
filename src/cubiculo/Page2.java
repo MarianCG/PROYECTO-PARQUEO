@@ -4,9 +4,7 @@
  */
 package parqueo;
 
-import parqueo.Historial;
-import parqueo.Form;
-import parqueo.Empleado;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -15,24 +13,24 @@ import javax.swing.JOptionPane;
  */
 public class Page2 extends javax.swing.JPanel {
 
-    private Empleado[] arrempleado;
-    private boolean modificacionHecha;
-    private cubiculo_reserva sistemaCubiculos;
+    private Empleado[] arrempleado;  //arreglo de todos los empleados
+    private boolean modificacionHecha; //Para verificar si hubo cambis
+    private cubiculo_reserva sistemaCubiculos; //Contiene la lógica de los cubículos
 
-    public Page2(Empleado[] arrempleado, cubiculo_reserva sistemaCubiculos) {
+    public Page2(Empleado[] arrempleado, cubiculo_reserva sistemaCubiculos) { //Recibe parámetros del arrempleados y cubiculo_reserva
         initComponents();
         this.arrempleado = arrempleado;
         this.sistemaCubiculos = sistemaCubiculos;
 
-        String[] opcionesHoras = {
+        String[] opcionesHoras = { //Un arreglo de horas oara mostrar en una lista
             "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
             "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"
         };
-        HoraM.setModel(new javax.swing.DefaultComboBoxModel<>(opcionesHoras));
+        HoraM.setModel(new javax.swing.DefaultComboBoxModel<>(opcionesHoras)); //Se le notifica al Combo Box que use esas opciones
 
     }
 
-    private static boolean searchWorker(int ID, Empleado[] arrempleado) {
+    private static boolean searchWorker(int ID, Empleado[] arrempleado) { //Método para veriicar que el empleado este registrado 
         for (int i = 0; i < arrempleado.length; i++) {
             if (arrempleado[i] != null && arrempleado[i].getId() == ID) {
                 return true;
@@ -156,29 +154,31 @@ public class Page2 extends javax.swing.JPanel {
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
         try {
-            int codigoCubiculo = Integer.parseInt(nmCubiculo.getText().trim()) - 1;
+            //Lee el número del cubículo, el ID y la hora seleccionada desde la interfaz
+            int codigoCubiculo = Integer.parseInt(nmCubiculo.getText().trim()) - 1; //Se resta el 1 al número del cubículo porque los array empiezan desde 0
             int idEmpleado = Integer.parseInt(idModificar.getText().trim());
             String horaSeleccionada = HoraM.getSelectedItem().toString();
 
-            if (codigoCubiculo < 0 || codigoCubiculo >= sistemaCubiculos.getCantidad_cubiculos()) {
+            if (codigoCubiculo < 0 || codigoCubiculo >= sistemaCubiculos.getCantidad_cubiculos()) { //Verifica que el cubiculo exista, si es menor a 0 o mayor a 15
+                //, mostrara el mensaje de error.
                 JOptionPane.showMessageDialog(this, "Numero fuera de rango");
                 return;
             }
-            habitacion cubiculo = sistemaCubiculos.getVector_cubiculos(codigoCubiculo);
-            if (!cubiculo.getEsta_ocupada()) {
-                JOptionPane.showMessageDialog(this, "El cubiculo no tiene reserva activa.");
+            habitacion cubiculo = sistemaCubiculos.getVector_cubiculos(codigoCubiculo); //Obtiene el objeto (Cubiculo)
+            if (!cubiculo.getEsta_ocupada()) { //Verifica si el cubículo se encuentra ocupado
+                JOptionPane.showMessageDialog(this, "El cubiculo no tiene reserva activa."); //Si no hay reservas mostrará el JOptionPane
                 return;
             }
             if (!searchWorker(idEmpleado, arrempleado)) {
                 JOptionPane.showMessageDialog(this, "El ID no corresponde a un empleado registrado.");
                 return;
             }
-
+            //Modfica los datos de la reserva activa 
             cubiculo.setEsta_ocupada(true);
             cubiculo.setHoraReservaStr(horaSeleccionada);
             cubiculo.setIdEmpleado(idEmpleado);
 
-            Historial.deleteHistoialCubiculo(codigoCubiculo);
+            Historial.deleteHistoialCubiculo(codigoCubiculo); //Borra el historial anterior 
 
             // para actualizar el historial
             String nombreEmpleado = Form.getEmpleadoNombre(idEmpleado);
@@ -188,31 +188,33 @@ public class Page2 extends javax.swing.JPanel {
             }
             Historial.addReserve(nombreEmpleado, idEmpleado, horaSeleccionada, "Cubiculo" + (codigoCubiculo + 1));
 
-            String[] opcionesHoras = {
+            String[] opcionesHoras = { //Calcula hora fina de la modificación de la reserva
                 "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
                 "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"
             };
 
             int pos = -1;
             for (int i = 0; i < opcionesHoras.length; i++) {
-                if (opcionesHoras[i].equals(horaSeleccionada)) {
+                if (opcionesHoras[i].equals(horaSeleccionada)) { //Lista de las Horas
                     pos = i;
                     break;
                 }
             }
 
             String horaFin;
-            if (pos != -1 && pos + 1 < opcionesHoras.length) {
+            if (pos != -1 && pos + 1 < opcionesHoras.length) { //Calcula la hora en la que va a finalizar la reserva modificada 
                 horaFin = opcionesHoras[pos + 1];
 
                 JOptionPane.showMessageDialog(null, "Reserva modificada de\n " + horaSeleccionada + " a " + horaFin);
-
+                
+                //  Limpia los campos después que el administrado haga la modificación
                 nmCubiculo.setText("");
                 idModificar.setText("");
                 HoraM.setSelectedIndex(0);
 
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException e) { //Para mostrar el error( ejem: si el usuario escribe un texto en vez de un numero, ya que el Integer
+            //esta convirtiendo un texto a número
             JOptionPane.showMessageDialog(this, "Ingrese numero válidos");
         }
     }//GEN-LAST:event_ModificarActionPerformed
